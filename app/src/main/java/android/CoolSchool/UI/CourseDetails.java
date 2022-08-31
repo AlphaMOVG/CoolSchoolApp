@@ -5,11 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.CoolSchool.R;
 import android.os.Bundle;
 
-public class Courses extends AppCompatActivity {
+public class CourseDetails extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_courses);
+        setContentView(R.layout.activity_course_details);
     }
 }

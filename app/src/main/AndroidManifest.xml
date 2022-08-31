@@ -14,16 +14,34 @@
         android:theme="@style/Theme.CoolSchool"
         tools:targetApi="31">
         <activity
-            android:name=".Assesments"
+            android:name=".UI.TermDetails"
+            android:parentActivityName=".UI.TermsList"
+            android:label="Term Details"
             android:exported="false" />
         <activity
-            android:name=".Courses"
+            android:name=".UI.CourseDetails"
+            android:parentActivityName=".UI.CoursesList"
             android:exported="false" />
         <activity
-            android:name=".Terms"
+            android:name=".UI.AssessmentDetails"
+            android:parentActivityName=".UI.AssessmentsList"
             android:exported="false" />
         <activity
-            android:name=".SelectScreen"
+            android:name=".UI.AssessmentsList"
+            android:parentActivityName=".UI.SelectScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.CoursesList"
+            android:parentActivityName=".UI.SelectScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.TermsList"
+            android:parentActivityName=".UI.SelectScreen"
+            android:label="Terms List"
+            android:exported="false" />
+        <activity
+            android:name=".UI.SelectScreen"
+            android:parentActivityName=".UI.MainActivity"
             android:exported="false" />
         <activity
             android:name=".UI.MainActivity"

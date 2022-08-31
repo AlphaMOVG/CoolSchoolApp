@@ -13,6 +13,7 @@
         android:layout_height="67dp"
         android:layout_marginBottom="164dp"
         android:backgroundTint="#03115E"
+        android:onClick="enterButton"
         android:text="Enter"
         android:textColor="#F6F5F5"
         app:layout_constraintBottom_toBottomOf="parent"
