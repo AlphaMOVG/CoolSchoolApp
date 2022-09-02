@@ -5,13 +5,15 @@ import android.widget.DatePicker;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.time.LocalDate;
+
 @Entity(tableName = "Assessments")
 public class Assessments {
     @PrimaryKey(autoGenerate = true)
     private int assessmentsID;
 
     private String assessmentName;
-    private DatePicker assessmentDate;
+    private LocalDate assessmentDate;
     private String assessmentType;
 
     @Override
@@ -21,6 +23,13 @@ public class Assessments {
                 ", assessmentName='" + assessmentName + '\'' +
                 '}';
 
+    }
+
+    public Assessments(int assessmentsID, String assessmentName, LocalDate assessmentDate, String assessmentType) {
+        this.assessmentsID = assessmentsID;
+        this.assessmentName = assessmentName;
+        this.assessmentDate = assessmentDate;
+        this.assessmentType = assessmentType;
     }
 
     public int getAssessmentsID() {
@@ -39,11 +48,11 @@ public class Assessments {
         this.assessmentName = assessmentName;
     }
 
-    public DatePicker getAssessmentDate() {
+    public LocalDate getAssessmentDate() {
         return assessmentDate;
     }
 
-    public void setAssessmentDate(DatePicker assessmentDate) {
+    public void setAssessmentDate(LocalDate assessmentDate) {
         this.assessmentDate = assessmentDate;
     }
 
@@ -57,10 +66,5 @@ public class Assessments {
 
 
 
-    public Assessments(int assessmentsID, String assessmentName, DatePicker assessmentDate, String assessmentType) {
-        this.assessmentsID = assessmentsID;
-        this.assessmentName = assessmentName;
-        this.assessmentDate = assessmentDate;
-        this.assessmentType = assessmentType;
-    }
+
 }
