@@ -48,7 +48,6 @@ public class Repository {
     }
 
     public void insert(Assessments assessments) {
-
         databaseExecutors.execute(() -> {
             mAssessmentsDAO.insert(assessments);
         });
@@ -58,4 +57,27 @@ public class Repository {
             e.printStackTrace();
         }
     }
+
+    public void update(Assessments assessments) {
+        databaseExecutors.execute(() -> {
+            mAssessmentsDAO.update(assessments);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Assessments assessments) {
+        databaseExecutors.execute(() -> {
+            mAssessmentsDAO.delete(assessments);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

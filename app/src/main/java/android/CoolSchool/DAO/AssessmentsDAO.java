@@ -2,6 +2,7 @@ package android.CoolSchool.DAO;
 
 import android.CoolSchool.Entity.Assessments;
 
+import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
@@ -10,6 +11,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+@Dao
 public interface AssessmentsDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Assessments assessment);
