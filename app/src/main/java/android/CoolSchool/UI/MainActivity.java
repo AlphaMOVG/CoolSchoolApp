@@ -2,6 +2,8 @@ package android.CoolSchool.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     public void enterButton(View view) {
         Intent intent = new Intent(MainActivity.this, SelectScreen.class);
         startActivity(intent);
+        Repository repo = new Repository(getApplication());
+        Assessments assessments = new Assessments(1, "Name", 10-22-2022, "Objective");
+        repo.insert(assessments);
     }
 
 }
