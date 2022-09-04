@@ -9,10 +9,10 @@ import android.widget.RadioGroup;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class AssessmentDetails extends AppCompatActivity {
-    TextInputEditText assessmentIDTxt;
-    TextInputEditText assessmentNameTxt;
-    TextInputEditText assessmentDatePicker;
-    RadioGroup radioBtnGroup;
+    TextInputEditText editAssessmentIDTxt;
+    TextInputEditText editAssessmentNameTxt;
+    TextInputEditText editAssessmentDatePicker;
+    RadioGroup editRadioBtnGroup;
     int id;
     String name;
     String date;
@@ -22,14 +22,20 @@ public class AssessmentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_details);
-        assessmentIDTxt = findViewById(R.id.assessmentIDTxt);
-        assessmentNameTxt = findViewById(R.id.assessmentNameTxt);
-        assessmentDatePicker = findViewById(R.id.assessmentDatePicker);
-        radioBtnGroup = findViewById(R.id.radioBtnGroup);
+        editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
+        editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
+        editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
+        editRadioBtnGroup = findViewById(R.id.radioBtnGroup);
         id = getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
         type = getIntent().getStringExtra("type");
+        editAssessmentIDTxt.setText(Integer.toString(id));
+        editAssessmentNameTxt.setText(name);
+        editAssessmentDatePicker.setText(date);
+        //editRadioBtnGroup.set;
+
+
     }
 
     /**
