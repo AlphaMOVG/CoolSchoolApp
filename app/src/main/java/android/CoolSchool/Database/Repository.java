@@ -34,7 +34,9 @@ public class Repository {
         mTermsDAO = db.termsDAO();
     }
 
-
+    /**
+     * Assessments
+     * */
     public List<Assessments> getAllAssessments(){
         databaseExecutors.execute(()->{
             mAllAssessments = mAssessmentsDAO.getAllAssessments();
@@ -81,7 +83,9 @@ public class Repository {
         }
     }
 
-//Courses
+/**
+ * Courses
+ * */
     public List<Courses> getAllCourses(){
         databaseExecutors.execute(()->{
             mAllCourses = mCoursesDAO.getAllCourses();
@@ -128,7 +132,9 @@ public class Repository {
         }
     }
 
-        //Terms
+        /**
+         * Terms
+         * */
     public List<Terms> getAllTerms(){
         databaseExecutors.execute(()->{
             mAllTerms = mTermsDAO.getAllTerms();

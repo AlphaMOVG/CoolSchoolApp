@@ -12,4 +12,8 @@ public class TermDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_term_details);
     }
+
+    /**
+     * Need to add the date handeling code here
+     * */
 }

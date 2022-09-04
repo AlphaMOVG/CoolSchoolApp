@@ -35,4 +35,6 @@ public class TermsList extends AppCompatActivity {
         Intent intent = new Intent(TermsList.this, TermDetails.class);
         startActivity(intent);
     }
+
+
 }

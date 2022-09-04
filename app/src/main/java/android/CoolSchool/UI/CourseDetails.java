@@ -12,4 +12,8 @@ public class CourseDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
     }
+
+    /**
+     * Need to add the date handeling code here
+     * */
 }
