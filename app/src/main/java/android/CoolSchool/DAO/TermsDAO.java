@@ -1,7 +1,5 @@
 package android.CoolSchool.DAO;
 
-import android.CoolSchool.Entity.Assessments;
-import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.Entity.Terms;
 
 import androidx.room.Dao;
@@ -25,5 +23,5 @@ public interface TermsDAO {
     void delete(Terms terms);
 
     @Query("SELECT * FROM Terms ORDER BY termsID ASC")
-    List<Assessments> getAllTerms();
+    List<Terms> getAllTerms();
 }

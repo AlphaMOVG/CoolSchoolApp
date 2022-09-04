@@ -1,6 +1,5 @@
 package android.CoolSchool.DAO;
 
-import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.Entity.Courses;
 
 import androidx.room.Dao;
@@ -24,5 +23,5 @@ public interface CoursesDAO {
     void delete(Courses courses);
 
     @Query("SELECT * FROM Courses ORDER BY coursesID ASC")
-    List<Assessments> getAllCourses();
+    List<Courses> getAllCourses();
 }

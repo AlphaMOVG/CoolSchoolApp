@@ -34,6 +34,7 @@ public class Repository {
         mTermsDAO = db.termsDAO();
     }
 
+
     public List<Assessments> getAllAssessments(){
         databaseExecutors.execute(()->{
             mAllAssessments = mAssessmentsDAO.getAllAssessments();
@@ -72,6 +73,100 @@ public class Repository {
     public void delete(Assessments assessments) {
         databaseExecutors.execute(() -> {
             mAssessmentsDAO.delete(assessments);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+//Courses
+    public List<Courses> getAllCourses(){
+        databaseExecutors.execute(()->{
+            mAllCourses = mCoursesDAO.getAllCourses();
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllCourses;
+    }
+
+    public void insert(Courses courses) {
+        databaseExecutors.execute(() -> {
+            mCoursesDAO.insert(courses);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Courses courses) {
+        databaseExecutors.execute(() -> {
+            mCoursesDAO.update(courses);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Courses courses) {
+        databaseExecutors.execute(() -> {
+            mCoursesDAO.delete(courses);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+        //Terms
+    public List<Terms> getAllTerms(){
+        databaseExecutors.execute(()->{
+            mAllTerms = mTermsDAO.getAllTerms();
+        });
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mAllTerms;
+    }
+
+    public void insert(Terms terms) {
+        databaseExecutors.execute(() -> {
+            mTermsDAO.insert(terms);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update(Terms terms) {
+        databaseExecutors.execute(() -> {
+            mTermsDAO.update(terms);
+        });
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void delete(Terms terms) {
+        databaseExecutors.execute(() -> {
+            mTermsDAO.delete(terms);
         });
         try {
             Thread.sleep(1000);
