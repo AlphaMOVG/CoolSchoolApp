@@ -46,17 +46,13 @@
                     android:text="Hi1"
                     android:textColor="#091970"></TextView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/editAssessmentName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hi2"
-                    android:textColor="#091970"></TextView>
+                    android:textColor="#091970"></EditText>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hi3"
-                    android:textColor="#091970"></TextView>
             </LinearLayout>
 
             <LinearLayout
@@ -125,9 +121,11 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/assessmentRecycler"
         android:layout_width="383dp"
         android:layout_height="222dp"
         android:layout_marginTop="200dp"
+        android:background="#0C2F73"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="parent"
