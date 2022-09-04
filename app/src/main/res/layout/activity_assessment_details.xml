@@ -58,6 +58,7 @@
             android:id="@+id/assessmentIDTxt"
             android:layout_width="273dp"
             android:layout_height="match_parent"
+            android:editable="false"
             android:hint="Assessment ID"
             android:textColor="#FCFDFF"
             android:textColorHighlight="#091970"

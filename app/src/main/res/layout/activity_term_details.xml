@@ -34,6 +34,7 @@
             android:id="@+id/termIDTxt"
             android:layout_width="278dp"
             android:layout_height="62dp"
+            android:editable="false"
             android:hint="Term ID"
             android:textColor="#FBFAFA" />
     </com.google.android.material.textfield.TextInputLayout>

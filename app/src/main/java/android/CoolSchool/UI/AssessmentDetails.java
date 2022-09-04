@@ -26,7 +26,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
         editRadioBtnGroup = findViewById(R.id.radioBtnGroup);
-        id = getIntent().getIntExtra("id", -1);
+        id = getIntent().getIntExtra("id", 0);
         name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
         type = getIntent().getStringExtra("type");

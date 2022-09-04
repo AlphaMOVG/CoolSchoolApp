@@ -33,6 +33,7 @@
             android:id="@+id/courseIDTxt"
             android:layout_width="208dp"
             android:layout_height="match_parent"
+            android:editable="false"
             android:hint="Course ID"
             android:textColor="#FDFEFF" />
     </com.google.android.material.textfield.TextInputLayout>
