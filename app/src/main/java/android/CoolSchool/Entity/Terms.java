@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity(tableName = "Terms")
 public class Terms {
@@ -12,8 +13,8 @@ public class Terms {
     private int termsID;
 
     private String termName;
-    private LocalDate start;
-    private LocalDate end;
+    private String start;
+    private String end;
 
     @Override
     public String toString() {
@@ -23,7 +24,7 @@ public class Terms {
                 '}';
     }
 
-    public Terms(int termsID, String termName, LocalDate start, LocalDate end) {
+    public Terms(int termsID, String termName, String start, String end) {
         this.termsID = termsID;
         this.termName = termName;
         this.start = start;
@@ -46,19 +47,19 @@ public class Terms {
         this.termName = termName;
     }
 
-    public LocalDate getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(LocalDate start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public LocalDate getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDate end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 

@@ -24,6 +24,6 @@ public interface TermsDAO {
     @Delete
     void delete(Terms terms);
 
-    @Query("SELECT * FROM Assessments ORDER BY assessmentsID ASC")
+    @Query("SELECT * FROM Terms ORDER BY termsID ASC")
     List<Assessments> getAllTerms();
 }

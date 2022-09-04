@@ -6,6 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity(tableName = "Assessments")
 public class Assessments {
@@ -13,7 +14,7 @@ public class Assessments {
     private int assessmentsID;
 
     private String assessmentName;
-    private LocalDate assessmentDate;
+    private String assessmentDate;
     private String assessmentType;
 
     @Override
@@ -25,7 +26,7 @@ public class Assessments {
 
     }
 
-    public Assessments(int assessmentsID, String assessmentName, LocalDate assessmentDate, String assessmentType) {
+    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, String assessmentType) {
         this.assessmentsID = assessmentsID;
         this.assessmentName = assessmentName;
         this.assessmentDate = assessmentDate;
@@ -48,11 +49,11 @@ public class Assessments {
         this.assessmentName = assessmentName;
     }
 
-    public LocalDate getAssessmentDate() {
+    public String getAssessmentDate() {
         return assessmentDate;
     }
 
-    public void setAssessmentDate(LocalDate assessmentDate) {
+    public void setAssessmentDate(String assessmentDate) {
         this.assessmentDate = assessmentDate;
     }
 

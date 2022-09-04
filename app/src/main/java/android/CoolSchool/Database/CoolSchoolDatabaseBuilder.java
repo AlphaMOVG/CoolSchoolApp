@@ -12,15 +12,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+
 /**
  * Code that builds the database for the application.
  * */
-@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 2, exportSchema = false )
+@Database(entities = {Assessments.class, Courses.class, Terms.class}, version = 4, exportSchema = false )
 public abstract class CoolSchoolDatabaseBuilder extends RoomDatabase {
     public abstract AssessmentsDAO assessmentsDAO();
-
     public abstract CoursesDAO coursesDAO();
-
     public abstract TermsDAO termsDAO();
 
     public static volatile CoolSchoolDatabaseBuilder INSTANCE;

@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SelectScreen.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        Assessments assessments = new Assessments(1, "Name", 10-22-2022, "Objective");
+        Assessments assessments = new Assessments(1, "Name", "10/22/2022", "Objective");
         repo.insert(assessments);
     }
 
