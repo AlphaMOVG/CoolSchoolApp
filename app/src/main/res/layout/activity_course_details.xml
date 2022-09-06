@@ -11,12 +11,11 @@
         android:id="@+id/textView6"
         android:layout_width="81dp"
         android:layout_height="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:text="Course"
         android:textColor="#091970"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,9 +23,9 @@
         android:id="@+id/textInputLayout4"
         android:layout_width="306dp"
         android:layout_height="56dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -42,7 +41,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="260dp"
         android:layout_height="54dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="136dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,9 +58,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="248dp"
         android:layout_height="58dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="200dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -76,9 +75,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="357dp"
         android:layout_height="54dp"
-        android:layout_marginTop="288dp"
+        android:layout_marginTop="268dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.277"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -93,9 +92,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="348dp"
         android:layout_height="55dp"
-        android:layout_marginTop="352dp"
+        android:layout_marginTop="336dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.253"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -110,9 +109,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="373dp"
         android:layout_height="53dp"
-        android:layout_marginTop="416dp"
+        android:layout_marginTop="400dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.394"
+        app:layout_constraintHorizontal_bias="0.342"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -126,17 +125,17 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout2"
-        android:layout_width="362dp"
+        android:layout_width="372dp"
         android:layout_height="50dp"
-        android:layout_marginTop="484dp"
+        android:layout_marginTop="460dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.326"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cIEmailTxt"
-            android:layout_width="333dp"
+            android:layout_width="340dp"
             android:layout_height="match_parent"
             android:hint="C.I. E-Mail"
             android:textColor="#FDFEFF" />
@@ -167,11 +166,23 @@
 
     <Spinner
         android:id="@+id/assessmentsSpinner"
-        android:layout_width="332dp"
-        android:layout_height="66dp"
-        android:layout_marginTop="544dp"
+        android:layout_width="335dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="520dp"
+        android:background="#272525"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintHorizontal_bias="0.171"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/statusSpinner"
+        android:layout_width="337dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="568dp"
+        android:background="#272525"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.175"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

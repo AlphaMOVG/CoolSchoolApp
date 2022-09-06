@@ -5,14 +5,26 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.RadioGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class AssessmentDetails extends AppCompatActivity {
+    TextInputEditText dateText;
+    DatePickerDialog.OnDateSetListener myDate;
+    final Calendar myCalendar = Calendar.getInstance();
+
+
     TextInputEditText editAssessmentIDTxt;
     TextInputEditText editAssessmentNameTxt;
     TextInputEditText editAssessmentDatePicker;
@@ -51,8 +63,46 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-        //editRadioBtnGroup.setOnCheckedChangeListener(CompoundButton.setOnCheckedChangeListener());
+
         repo = new Repository(getApplication());
+
+        /**
+         * building and assigning a calender object to the Edit text field in the app.
+         * */
+        dateText = findViewById(R.id.assessmentDatePicker);
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        String currentDate = sdf.format(new Date());
+        dateText.setText(currentDate);
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date;
+                String info = dateText.getText().toString();
+                try {
+                    myCalendar.setTime(sdf.parse(info));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new DatePickerDialog(AssessmentDetails.this, myDate, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        myDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+    }
+
+    private void updateLabel(){
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        dateText.setText(sdf.format(myCalendar.getTime()));
     }
 
    /* public void saveButton(View view) {
