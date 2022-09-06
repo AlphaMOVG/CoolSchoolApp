@@ -53,8 +53,6 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentDatePicker.setText(date);
         //editRadioBtnGroup.setOnCheckedChangeListener(CompoundButton.setOnCheckedChangeListener());
         repo = new Repository(getApplication());
-
-
     }
 
    /* public void saveButton(View view) {
