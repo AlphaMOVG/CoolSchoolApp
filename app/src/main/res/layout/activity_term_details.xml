@@ -44,7 +44,7 @@
         android:id="@+id/textInputLayout"
         android:layout_width="363dp"
         android:layout_height="67dp"
-        android:layout_marginTop="144dp"
+        android:layout_marginTop="152dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -59,27 +59,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="365dp"
-        android:layout_height="68dp"
-        android:layout_marginTop="224dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.347"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/coursesTxt"
-            android:layout_width="277dp"
-            android:layout_height="match_parent"
-            android:hint="Courses"
-            android:textColor="#FBFAFA" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout5"
         android:layout_width="327dp"
         android:layout_height="65dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="232dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +79,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="359dp"
         android:layout_height="72dp"
-        android:layout_marginTop="384dp"
+        android:layout_marginTop="312dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="parent"
@@ -132,5 +115,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/courseSpinner"
+        android:layout_width="280dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,7 +34,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
-        editRadioBtnGroup = findViewById(R.id.radioBtnGroup);
+
 
         /**
          * assigns the keys of the adapter to the variables I created

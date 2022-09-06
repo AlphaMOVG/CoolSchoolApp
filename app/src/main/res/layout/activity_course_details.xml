@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout4"
         android:layout_width="306dp"
         android:layout_height="56dp"
         android:layout_marginTop="96dp"
@@ -124,6 +125,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
         android:layout_width="362dp"
         android:layout_height="50dp"
         android:layout_marginTop="484dp"
@@ -137,23 +139,6 @@
             android:layout_width="333dp"
             android:layout_height="match_parent"
             android:hint="C.I. E-Mail"
-            android:textColor="#FDFEFF" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="362dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="548dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.306"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/assessmentsTxt"
-            android:layout_width="334dp"
-            android:layout_height="match_parent"
-            android:hint="Assessments"
             android:textColor="#FDFEFF" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,5 +164,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.728"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/assessmentsSpinner"
+        android:layout_width="332dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="544dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
