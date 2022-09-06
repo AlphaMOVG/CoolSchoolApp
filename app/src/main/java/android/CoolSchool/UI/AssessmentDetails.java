@@ -43,7 +43,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
     }
 
-    public void saveButton(View view) {
+   /* public void saveButton(View view) {
         Assessments assessments;
         if(id == -1){
             int newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
@@ -53,7 +53,7 @@ public class AssessmentDetails extends AppCompatActivity {
             assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), editAssessmentDatePicker.getText().toString(), editRadioBtnGroup);
             repo.update(assessments);
         }
-    }
+    }*/
 
     /**
      * Need to add the date handeling code here
