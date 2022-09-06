@@ -27,14 +27,27 @@ public class AssessmentDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment_details);
+
+        /**
+         * assigns the variables I created to the IDs of the assessments details text input fields.
+         * */
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
         editRadioBtnGroup = findViewById(R.id.radioBtnGroup);
+
+        /**
+         * assigns the keys of the adapter to the variables I created
+         * */
         id = getIntent().getIntExtra("id", 0);
         name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
         type = getIntent().getStringExtra("type");
+
+
+        /**
+         * assigns the keys of the adapter to the text fields.
+         * */
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);

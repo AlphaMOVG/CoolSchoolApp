@@ -3,9 +3,7 @@ package android.CoolSchool.Entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Entity(tableName = "Terms")
 public class Terms {

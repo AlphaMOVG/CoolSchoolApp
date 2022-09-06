@@ -45,15 +45,6 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
         }
     }
 
-    /**
-     *        this.coursesID = coursesID;
-     *         this.courseName = courseName;
-     *         this.start = start;
-     *         this.end = end;
-     *         this.cIName = cIName;
-     *         this.cIPhoneNumber = cIPhoneNumber;
-     *         this.cIEMail = cIEMail;
-     * */
 
     private List<Courses> mCourses;
     private final Context context;

@@ -1,13 +1,19 @@
 package android.CoolSchool.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.util.List;
 
 public class TermsList extends AppCompatActivity {
 
@@ -17,6 +23,13 @@ public class TermsList extends AppCompatActivity {
         setContentView(R.layout.activity_termslist);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        RecyclerView recyclerView = findViewById(R.id.termRecycler);
+        Repository repo = new Repository(getApplication());
+        List<Terms> terms = repo.getAllTerms();
+        final TermsAdapter adapter = new TermsAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter.setTerms(terms);
     }
         public boolean onCreateOptionsMenu(Menu menu){
             getMenuInflater().inflate(R.menu.menu_termlist, menu);

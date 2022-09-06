@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
+import android.CoolSchool.Entity.Courses;
+import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
         Repository repo = new Repository(getApplication());
         Assessments assessments = new Assessments(1, "Name", "10/22/2022", "Objective");
         repo.insert(assessments);
+        Courses courses = new Courses(1,"course","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com");
+        repo.insert(courses);
+        Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022");
+        repo.insert(terms);
     }
 
 }

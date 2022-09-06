@@ -1,6 +1,6 @@
 package android.CoolSchool.UI;
 
-import android.CoolSchool.Entity.Courses;
+
 import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.content.Context;
@@ -27,7 +27,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermsViewHol
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     final Terms current = mTerms.get(position);
-                    Intent intent = new Intent(context,CourseDetails.class);
+                    Intent intent = new Intent(context,TermDetails.class);
                     intent.putExtra("id", current.getTermsID());
                     intent.putExtra("name", current.getTermName());
                     intent.putExtra("start", current.getStart());
@@ -41,12 +41,6 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermsViewHol
         }
     }
 
-    /**
-     *         this.termsID = termsID;
-     *         this.termName = termName;
-     *         this.start = start;
-     *         this.end = end;
-     * */
 
     private List<Terms> mTerms;
     private final Context context;
@@ -71,7 +65,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermsViewHol
             holder.termItemView.setText(name);
         }
         else{
-            holder.termItemView.setText("No assessment name");
+            holder.termItemView.setText("No term name");
         }
     }
 
