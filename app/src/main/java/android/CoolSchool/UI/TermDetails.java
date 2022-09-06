@@ -48,6 +48,7 @@ public class TermDetails extends AppCompatActivity {
         editName.setText(name);
         editStart.setText(start);
         editEnd.setText(end);
+        repo = new Repository(getApplication());
     }
 
     /**

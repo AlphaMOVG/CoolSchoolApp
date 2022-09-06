@@ -54,7 +54,6 @@ public class CourseDetails extends AppCompatActivity {
         cINumber = getIntent().getStringExtra("cinumber");
         cIEM = getIntent().getStringExtra("ciemail");
 
-
         /**
          * assigns the keys of the adapter to the text fields.
          * */
@@ -66,7 +65,7 @@ public class CourseDetails extends AppCompatActivity {
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
 
-
+        repo = new Repository(getApplication());
     }
 
     /**

@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SelectScreen.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        Assessments assessments = new Assessments(1, "Name", "10/22/2022", "Objective");
+        Assessments assessments = new Assessments(1, "Assessment", "10/22/2022", "Objective");
         repo.insert(assessments);
-        Courses courses = new Courses(1,"course","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com");
+        Courses courses = new Courses(1,"Course","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com");
         repo.insert(courses);
         Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022");
         repo.insert(terms);
