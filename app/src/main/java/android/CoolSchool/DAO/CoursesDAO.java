@@ -22,6 +22,6 @@ public interface CoursesDAO {
     @Delete
     void delete(Courses courses);
 
-    @Query("SELECT * FROM Courses ORDER BY coursesID ASC")
+    @Query("SELECT * FROM Courses ORDER BY coursesID ASC ") //WHERE Courses.assessmentID = Assessments.assesmentsID find out why this isnt working
     List<Courses> getAllCourses();
 }

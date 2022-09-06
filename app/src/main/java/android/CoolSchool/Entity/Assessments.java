@@ -16,15 +16,17 @@ public class Assessments {
     private String assessmentName;
     private String assessmentDate;
     private String assessmentType;
+    private String notes;
 
 
 
 
-    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, String assessmentType) {
+    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, String assessmentType, String notes) {
         this.assessmentsID = assessmentsID;
         this.assessmentName = assessmentName;
         this.assessmentDate = assessmentDate;
         this.assessmentType = assessmentType;
+        this.notes = notes;
     }
 
     @Override
@@ -66,7 +68,11 @@ public class Assessments {
         this.assessmentType = assessmentType;
     }
 
+    public String getNotes() {
+        return notes;
+    }
 
-
-
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
 }

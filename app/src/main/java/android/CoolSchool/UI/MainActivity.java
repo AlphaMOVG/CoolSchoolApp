@@ -25,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, SelectScreen.class);
         startActivity(intent);
         Repository repo = new Repository(getApplication());
-        Assessments assessments = new Assessments(1, "Assessment", "10/22/2022", "Objective");
+
+        Assessments assessments = new Assessments(1, "Assessment", "10/22/2022", "Objective","");
         repo.insert(assessments);
-        Courses courses = new Courses(1,"Course","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com");
+
+        Courses courses = new Courses(1,"Course","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com", 78, "In progress","note" );
         repo.insert(courses);
-        Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022");
+
+        Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022", 55, "note" );
         repo.insert(terms);
     }
 

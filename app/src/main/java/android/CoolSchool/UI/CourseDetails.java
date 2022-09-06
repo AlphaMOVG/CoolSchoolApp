@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -37,6 +36,9 @@ public class CourseDetails extends AppCompatActivity {
     TextInputEditText editCIName;
     TextInputEditText editCIPhone;
     TextInputEditText editCIMail;
+    Spinner editAssessmentsSpin;
+    Spinner editStatusSpin;
+    TextInputEditText editNote;
 
     int id;
     String name;
@@ -45,6 +47,9 @@ public class CourseDetails extends AppCompatActivity {
     String cIName;
     String cINumber;
     String cIEM;
+    int assessmentID;
+    String status;
+    String note;
     Repository repo;
 
     @Override
@@ -62,6 +67,9 @@ public class CourseDetails extends AppCompatActivity {
         editCIName = findViewById(R.id.cINameTxt);
         editCIPhone = findViewById(R.id.cIPhoneTxt);
         editCIMail = findViewById(R.id.cIEmailTxt);
+        editAssessmentsSpin = findViewById(R.id.assessmentsSpinner);
+        editStatusSpin = findViewById(R.id.statusSpinner);
+        editNote = findViewById(R.id.notesTxt);
 
         /**
          * assigns the keys of the adapter to the variables I created
@@ -73,6 +81,9 @@ public class CourseDetails extends AppCompatActivity {
         cIName = getIntent().getStringExtra("ciname");
         cINumber = getIntent().getStringExtra("cinumber");
         cIEM = getIntent().getStringExtra("ciemail");
+        assessmentID = getIntent().getIntExtra("assessid", 0);
+        status = getIntent().getStringExtra("status");
+        note = getIntent().getStringExtra("notes");
 
         /**
          * assigns the keys of the adapter to the text fields.
@@ -84,6 +95,9 @@ public class CourseDetails extends AppCompatActivity {
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
+        editAssessmentsSpin.setSelection(assessmentID);
+        editStatusSpin.setSelection(Integer.parseInt(status));
+        editNote.setText(note);
 
         repo = new Repository(getApplication());
 
@@ -124,7 +138,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.assessmentsSpinner);
         ArrayList<Assessments> myAssessments = new ArrayList<>();
-        myAssessments.add(new Assessments(1, "assessment", "10/22/2022", "Performance"));
+        myAssessments.add(new Assessments(1, "assessment", "10/22/2022", "Performance", "note"));
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);

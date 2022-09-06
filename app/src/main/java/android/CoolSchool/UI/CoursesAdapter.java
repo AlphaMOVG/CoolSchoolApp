@@ -37,6 +37,9 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
                     intent.putExtra("ciname", current.getCIName());
                     intent.putExtra("cinumber", current.getCIPhoneNumber());
                     intent.putExtra("ciemail", current.getCIEMail());
+                    intent.putExtra("assessid", String.valueOf(current.getAssessmentID()));
+                    intent.putExtra("status", current.getStatus());
+                    intent.putExtra("notes", current.getNotes());
                     context.startActivity(intent);
 
                 }

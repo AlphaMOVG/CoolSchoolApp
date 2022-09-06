@@ -3,9 +3,6 @@ package android.CoolSchool.Entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import java.time.LocalDate;
-import java.util.Date;
-
 
 @Entity(tableName = "Courses")
 public class Courses {
@@ -18,10 +15,12 @@ public class Courses {
     private String cIName;
     private String cIPhoneNumber;
     private String cIEMail;
+    private int assessmentID;
+    private String status;
+    private String notes;
 
 
-
-    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail) {
+    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail, int assessmentID, String status, String notes) {
         this.coursesID = coursesID;
         this.courseName = courseName;
         this.start = start;
@@ -29,11 +28,14 @@ public class Courses {
         this.cIName = cIName;
         this.cIPhoneNumber = cIPhoneNumber;
         this.cIEMail = cIEMail;
+        this.status = status;
+        this.assessmentID = assessmentID;
+        this.notes = notes;
     }
 
     @Override
     public String toString() {
-        return  this.courseName;
+        return this.courseName;
     }
 
 
@@ -98,4 +100,30 @@ public class Courses {
     public void setCIEMail(String cIEMail) {
         this.cIEMail = cIEMail;
     }
+
+    public int getAssessmentID() {
+        return assessmentID;
+    }
+
+    public void setAssessmentID(int assessmentID) {
+        this.assessmentID = assessmentID;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        notes = notes;
+    }
 }
+
+

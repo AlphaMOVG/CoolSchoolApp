@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.RadioGroup;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -34,11 +35,14 @@ public class AssessmentDetails extends AppCompatActivity {
     TextInputEditText editAssessmentIDTxt;
     TextInputEditText editAssessmentNameTxt;
     TextInputEditText editAssessmentDatePicker;
-    RadioGroup editRadioBtnGroup;
+    Spinner editSpinner;
+    TextInputEditText editAssessmentNote;
+
     int id;
     String name;
     String date;
     String type;
+    String note;
     Repository repo;
 
     @Override
@@ -52,6 +56,8 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
+        editSpinner = findViewById(R.id.typeSpinner);
+        editAssessmentNote = findViewById(R.id.noteTxt);
 
 
         /**
@@ -61,6 +67,7 @@ public class AssessmentDetails extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
         type = getIntent().getStringExtra("type");
+        note = getIntent().getStringExtra("note");
 
 
         /**
@@ -69,6 +76,8 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
+        editSpinner.setSelection(selectSpinnerItemByValue());
+        editAssessmentNote.setText(note);
 
         repo = new Repository(getApplication());
 
@@ -169,6 +178,17 @@ public class AssessmentDetails extends AppCompatActivity {
             repo.update(assessments);
         }
     }*/
+
+
+    public static void selectSpinnerItemByValue(Spinner spnr, long value){
+        SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
+        for(int postition = 0; postition < adapter.getCount(); postition++){
+            if(adapter.getItemId(postition) == value){
+                spnr.setSelection(postition);
+                return;
+            }
+        }
+    }
 
     /**
      * Need to add the date handeling code here

@@ -3,7 +3,6 @@ package android.CoolSchool.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
-import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.R;
 import android.app.DatePickerDialog;
@@ -34,11 +33,15 @@ public class TermDetails extends AppCompatActivity {
     TextInputEditText editName;
     TextInputEditText editStart;
     TextInputEditText editEnd;
+    Spinner editCourseID;
+    TextInputEditText editNote;
 
     int id;
     String name;
     String start;
     String end;
+    int courseSpin;
+    String note;
     Repository repo;
 
     @Override
@@ -53,6 +56,8 @@ public class TermDetails extends AppCompatActivity {
         editName = findViewById(R.id.termNameTxt);
         editStart = findViewById(R.id.startDatePicker);
         editEnd = findViewById(R.id.endDatePicker);
+        editCourseID = findViewById(R.id.courseSpinner);
+        editNote = findViewById(R.id.notesTxt);
 
         /**
          * assigns the keys of the adapter to the variables I created
@@ -61,6 +66,8 @@ public class TermDetails extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
+        courseSpin = getIntent().getIntExtra("course", 88);
+        note = getIntent().getStringExtra("notes");
 
         /**
          * assigns the keys of the adapter to the text fields.
@@ -109,7 +116,7 @@ public class TermDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(1, "Course", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com"));
+        myCourses.add(new Courses(1, "Course", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
