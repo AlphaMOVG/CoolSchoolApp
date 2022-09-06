@@ -80,12 +80,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/saveButtonA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:onClick="saveButton"
+        android:backgroundTint="#091970"
+        android:onClick="save"
         android:text="Save"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.085"
@@ -108,7 +110,7 @@
         android:layout_width="287dp"
         android:layout_height="61dp"
         android:layout_marginTop="452dp"
-        android:background="#091970"
+        android:background="#4B4C50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"

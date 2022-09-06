@@ -19,13 +19,7 @@ public class Courses {
     private String cIPhoneNumber;
     private String cIEMail;
 
-    @Override
-    public String toString() {
-        return "Courses{" +
-                "coursesID=" + coursesID +
-                ", courseName='" + courseName + '\'' +
-                '}';
-    }
+
 
     public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail) {
         this.coursesID = coursesID;
@@ -36,6 +30,12 @@ public class Courses {
         this.cIPhoneNumber = cIPhoneNumber;
         this.cIEMail = cIEMail;
     }
+
+    @Override
+    public String toString() {
+        return  this.courseName;
+    }
+
 
     public int getCoursesID() {
         return coursesID;

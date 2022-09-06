@@ -3,16 +3,23 @@ package android.CoolSchool.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.RadioGroup;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -111,14 +118,66 @@ public class CourseDetails extends AppCompatActivity {
                 updateLabel();
             }
         };
+
+        /**
+         * This is where the spinner is populated with information from the added assessments
+         * */
+        Spinner assessmentSpinner = (Spinner) findViewById(R.id.assessmentsSpinner);
+        ArrayList<Assessments> myAssessments = new ArrayList<>();
+        myAssessments.add(new Assessments(1, "assessment", "10/22/2022", "Performance"));
+        ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
+        assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        assessmentSpinner.setAdapter(assessmentAdapter);
+
+        assessmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(CourseDetails.this,myAssessments.get(i).toString(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // another interface callback
+            }
+
+        });
+
+
+        /**
+         * This code sets the array from the value package string file to the spinner in assessment details.
+         * */
+        Spinner progressSpinner = (Spinner) findViewById(R.id.statusSpinner);
+        ArrayAdapter<CharSequence> progressAdapter = ArrayAdapter.createFromResource(this, R.array.course_progress_array, android.R.layout.simple_spinner_item);
+        assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        progressSpinner.setAdapter(progressAdapter);
     }
 
+    /**
+     * This method is apart of the DatePicker set up
+     * */
     private void updateLabel(){
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         dateText.setText(sdf.format(myCalendar.getTime()));
     }
+
+    /**
+     * Index selection
+     * */
+    public static void selectSpinnerItemByValue(Spinner spnr, long value){
+        SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
+        for(int postition = 0; postition < adapter.getCount(); postition++){
+            if(adapter.getItemId(postition) == value){
+                spnr.setSelection(postition);
+                return;
+            }
+        }
+    }
+
+
+
+
 
     /**
      * Need to add the date handeling code here

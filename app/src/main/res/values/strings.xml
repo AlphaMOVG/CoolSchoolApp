@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Cool School</string>
+    <string-array name = "assessment_types_array">
+        <item>Performance Assessment</item>
+        <item>Objective Assessment</item>
+    </string-array>
+
+    <string-array name = "course_progress_array">
+        <item>In progress</item>
+        <item>Completed</item>
+        <item>Plan to take</item>
+        <item>Dropped</item>
+    </string-array>
 </resources>

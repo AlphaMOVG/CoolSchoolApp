@@ -14,19 +14,18 @@ public class Terms {
     private String start;
     private String end;
 
-    @Override
-    public String toString() {
-        return "Terms{" +
-                "termsID=" + termsID +
-                ", termName='" + termName + '\'' +
-                '}';
-    }
+
 
     public Terms(int termsID, String termName, String start, String end) {
         this.termsID = termsID;
         this.termName = termName;
         this.start = start;
         this.end = end;
+    }
+
+    @Override
+    public String toString() {
+        return  this.termName;
     }
 
     public int getTermsID() {

@@ -8,13 +8,16 @@ import android.CoolSchool.R;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -97,8 +100,18 @@ public class AssessmentDetails extends AppCompatActivity {
                 updateLabel();
             }
         };
-    }
 
+        /**
+         * This code sets the array from the value package string file to the spinner in assessment details.
+         * */
+        Spinner assessmentSpinner = (Spinner) findViewById(R.id.typeSpinner);
+        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array, android.R.layout.simple_spinner_item);
+        assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        assessmentSpinner.setAdapter(assessmentAdapter);
+    }
+    /**
+     * This method is apart of the DatePicker set up
+     * */
     private void updateLabel(){
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);

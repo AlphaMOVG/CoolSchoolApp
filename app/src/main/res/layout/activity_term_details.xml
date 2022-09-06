@@ -94,11 +94,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/saveButtonT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="124dp"
+        android:backgroundTint="#091970"
         android:text="Save"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
@@ -120,9 +122,10 @@
         android:id="@+id/courseSpinner"
         android:layout_width="280dp"
         android:layout_height="63dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="396dp"
+        android:background="#4B4C50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.038"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

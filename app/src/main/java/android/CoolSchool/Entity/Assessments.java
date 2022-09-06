@@ -17,14 +17,8 @@ public class Assessments {
     private String assessmentDate;
     private String assessmentType;
 
-    @Override
-    public String toString() {
-        return "Assessments{" +
-                "assessmentsID=" + assessmentsID +
-                ", assessmentName='" + assessmentName + '\'' +
-                '}';
 
-    }
+
 
     public Assessments(int assessmentsID, String assessmentName, String assessmentDate, String assessmentType) {
         this.assessmentsID = assessmentsID;
@@ -32,6 +26,13 @@ public class Assessments {
         this.assessmentDate = assessmentDate;
         this.assessmentType = assessmentType;
     }
+
+    @Override
+    public String toString() {
+        return  this.assessmentName;
+    }
+
+
 
     public int getAssessmentsID() {
         return assessmentsID;
