@@ -6,7 +6,10 @@ import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
@@ -109,14 +112,51 @@ public class AssessmentDetails extends AppCompatActivity {
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
     }
+
     /**
      * This method is apart of the DatePicker set up
-     * */
-    private void updateLabel(){
+     */
+    private void updateLabel() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         dateText.setText(sdf.format(myCalendar.getTime()));
     }
+
+    public void save(View view) {
+    }
+
+
+    /**
+     * inflates the menu and set items to the menu.
+     * */
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.assessment_menu, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                this.finish();
+            return true;
+            case R.id.notes:
+                return true;
+            case R.id.shareNotes:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Text from note field"); // how do i add notes here?
+                sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+                return true;
+            case R.id.notify:
+                return true;
+            case R.id.refresh:
+                return true;
+        }
+        return  super.onOptionsItemSelected(item);
+    }
+
 
    /* public void saveButton(View view) {
         Assessments assessments;
@@ -134,3 +174,4 @@ public class AssessmentDetails extends AppCompatActivity {
      * Need to add the date handeling code here
      * */
 }
+

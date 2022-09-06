@@ -21,8 +21,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="299dp"
-        android:layout_height="85dp"
+        android:layout_width="293dp"
+        android:layout_height="65dp"
         android:layout_marginTop="92dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
@@ -31,8 +31,8 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/assessmentIDTxt"
-            android:layout_width="273dp"
-            android:layout_height="match_parent"
+            android:layout_width="258dp"
+            android:layout_height="57dp"
             android:editable="false"
             android:hint="Assessment ID"
             android:textColor="#FCFDFF"
@@ -42,11 +42,11 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout6"
-        android:layout_width="350dp"
-        android:layout_height="83dp"
-        android:layout_marginTop="216dp"
+        android:layout_width="310dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="164dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.262"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -61,11 +61,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="327dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="344dp"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="240dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
+        app:layout_constraintHorizontal_bias="0.177"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -109,11 +109,27 @@
         android:id="@+id/typeSpinner"
         android:layout_width="287dp"
         android:layout_height="61dp"
-        android:layout_marginTop="452dp"
+        android:layout_marginTop="320dp"
         android:background="#4B4C50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.129"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="311dp"
+        android:layout_height="88dp"
+        android:layout_marginTop="404dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/noteTxt"
+            android:layout_width="284dp"
+            android:layout_height="match_parent"
+            android:hint="Notes" />
+    </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
