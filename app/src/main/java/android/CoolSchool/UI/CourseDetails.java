@@ -67,8 +67,8 @@ public class CourseDetails extends AppCompatActivity {
         editCIName = findViewById(R.id.cINameTxt);
         editCIPhone = findViewById(R.id.cIPhoneTxt);
         editCIMail = findViewById(R.id.cIEmailTxt);
-       // editAssessmentsSpin = findViewById(R.id.assessmentsSpinner); find out how to set theses when an item is selected
-        //editStatusSpin = findViewById(R.id.statusSpinner); find out how to set theses when an item is selected
+        editAssessmentsSpin = findViewById(R.id.assessmentsSpinner);
+        editStatusSpin = findViewById(R.id.statusSpinner);
         editNote = findViewById(R.id.notesTxt);
 
         /**
@@ -95,8 +95,8 @@ public class CourseDetails extends AppCompatActivity {
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
-       // editAssessmentsSpin.setSelection(assessmentID);
-       // editStatusSpin.setSelection(Integer.parseInt(status));
+        editAssessmentsSpin.setSelection(assessmentID); //find out how to properly set these when an item is selected
+       // editStatusSpin.setSelection(status);// find out how to properly set these when an item is selected
         editNote.setText(note);
 
         repo = new Repository(getApplication());

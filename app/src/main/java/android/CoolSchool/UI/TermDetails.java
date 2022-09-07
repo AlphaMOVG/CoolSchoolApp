@@ -56,7 +56,7 @@ public class TermDetails extends AppCompatActivity {
         editName = findViewById(R.id.termNameTxt);
         editStart = findViewById(R.id.startDatePicker);
         editEnd = findViewById(R.id.endDatePicker);
-       // editCourseID = findViewById(R.id.courseSpinner); find out how to set theses when an item is selected
+        editCourseID = findViewById(R.id.courseSpinner);
         editNote = findViewById(R.id.notesTxt);
 
         /**
@@ -66,7 +66,7 @@ public class TermDetails extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
-      //  courseSpin = getIntent().getIntExtra("course", 88);
+        courseSpin = getIntent().getIntExtra("course", 0); //find out how to properly set these when an item is selected
         note = getIntent().getStringExtra("notes");
 
         /**
@@ -76,6 +76,8 @@ public class TermDetails extends AppCompatActivity {
         editName.setText(name);
         editStart.setText(start);
         editEnd.setText(end);
+        editCourseID.setSelection(courseSpin);
+        editNote.setText(note);
 
         repo = new Repository(getApplication());
 
@@ -116,7 +118,7 @@ public class TermDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(1, "Course", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
+        myCourses.add(new Courses(1, "Blue", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);

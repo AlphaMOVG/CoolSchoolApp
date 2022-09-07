@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +23,7 @@ import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,6 +34,7 @@ public class AssessmentDetails extends AppCompatActivity {
     TextInputEditText dateText;
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
+    SimpleDateFormat sdf;
 
 
     TextInputEditText editAssessmentIDTxt;
@@ -56,7 +61,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
-       // editSpinner = findViewById(R.id.typeSpinner); find out how to set theses when an item is selected
+        editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
 
 
@@ -76,7 +81,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-       // editSpinner.setSelection(selectSpinnerItemByValue());
+      //r  editSpinner.setSelection(type); //find out how to properly set these when an item is selected
         editAssessmentNote.setText(note);
 
         repo = new Repository(getApplication());
@@ -86,7 +91,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         dateText = findViewById(R.id.assessmentDatePicker);
         String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = sdf.format(new Date());
         dateText.setText(currentDate);
         dateText.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +114,10 @@ public class AssessmentDetails extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                updateLabelStart();
             }
         };
+
 
         /**
          * This code sets the array from the value package string file to the spinner in assessment details.
@@ -120,12 +126,14 @@ public class AssessmentDetails extends AppCompatActivity {
         ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array, android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
+
+        // This is the ed of the onCreate implementation method.
     }
 
     /**
      * This method is apart of the DatePicker set up
      */
-    private void updateLabel() {
+    private void updateLabelStart() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         dateText.setText(sdf.format(myCalendar.getTime()));
@@ -142,7 +150,12 @@ public class AssessmentDetails extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.assessment_menu, menu);
         return true;
     }
+
+    /**
+     * This is the code used to share notes from the share button
+     * */
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch(item.getItemId()){
             case android.R.id.home:
                 this.finish();
@@ -159,6 +172,19 @@ public class AssessmentDetails extends AppCompatActivity {
                 startActivity(shareIntent);
                 return true;
             case R.id.notify:
+                String dateFromScreen = dateText.getText().toString();
+                Date myDate = null;
+                try {
+                    myDate = sdf.parse(dateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
+                intent.putExtra("key", "message I want to send");
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
             case R.id.refresh:
                 return true;
@@ -192,6 +218,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
     /**
      * Need to add the date handeling code here
+     * saving code, fix
      * */
 }
 
