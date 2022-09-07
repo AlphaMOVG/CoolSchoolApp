@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
+import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -81,7 +82,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-      //r  editSpinner.setSelection(type); //find out how to properly set these when an item is selected
+      //  editSpinner.setSelection(type); //find out how to properly set these when an item is selected
         editAssessmentNote.setText(note);
 
         repo = new Repository(getApplication());
@@ -186,7 +187,12 @@ public class AssessmentDetails extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
-            case R.id.refresh:
+            case R.id.delete:
+                for(Assessments a: repo.getAllAssessments()){
+                    if (Courses.getAssessmentID() == editAssessmentIDTxt) currnetAssessmnt = prod;
+                }
+                numAssessments = 0;
+
                 return true;
         }
         return  super.onOptionsItemSelected(item);
@@ -218,7 +224,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
     /**
      * Need to add the date handeling code here
-     * saving code, fix
+     * saving feilds when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button
      * */
 }
 

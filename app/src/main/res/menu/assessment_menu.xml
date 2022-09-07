@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/notes"
-        android:orderInCategory="100"
-        android:title="Notes" />
+
     <item
         android:id="@+id/shareNotes"
         android:orderInCategory="100"
@@ -14,7 +11,7 @@
         android:orderInCategory="100"
         android:title="Notify" />
     <item
-        android:id="@+id/refresh"
+        android:id="@+id/delete"
         android:orderInCategory="100"
-        android:title="Refresh" />
+        android:title="Delete" />
 </menu>
