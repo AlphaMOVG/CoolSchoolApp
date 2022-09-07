@@ -56,7 +56,7 @@ public class TermDetails extends AppCompatActivity {
         editName = findViewById(R.id.termNameTxt);
         editStart = findViewById(R.id.startDatePicker);
         editEnd = findViewById(R.id.endDatePicker);
-        editCourseID = findViewById(R.id.courseSpinner);
+       // editCourseID = findViewById(R.id.courseSpinner); find out how to set theses when an item is selected
         editNote = findViewById(R.id.notesTxt);
 
         /**
@@ -66,7 +66,7 @@ public class TermDetails extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
-        courseSpin = getIntent().getIntExtra("course", 88);
+      //  courseSpin = getIntent().getIntExtra("course", 88);
         note = getIntent().getStringExtra("notes");
 
         /**

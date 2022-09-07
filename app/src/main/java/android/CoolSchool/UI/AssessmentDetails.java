@@ -56,7 +56,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
-        editSpinner = findViewById(R.id.typeSpinner);
+       // editSpinner = findViewById(R.id.typeSpinner); find out how to set theses when an item is selected
         editAssessmentNote = findViewById(R.id.noteTxt);
 
 
@@ -76,7 +76,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-        editSpinner.setSelection(selectSpinnerItemByValue());
+       // editSpinner.setSelection(selectSpinnerItemByValue());
         editAssessmentNote.setText(note);
 
         repo = new Repository(getApplication());
