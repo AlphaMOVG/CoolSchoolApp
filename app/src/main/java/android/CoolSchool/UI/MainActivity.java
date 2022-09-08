@@ -14,7 +14,6 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
     public static int numAlert;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         Repository repo = new Repository(getApplication());
 
-        Assessments assessments = new Assessments(1, "Assessment", "10/22/2022", "Objective","");
+        Assessments assessments = new Assessments(1, "Assessment", "10/22/2022", "Objective","This is a test note");
         repo.insert(assessments);
 
-        Courses courses = new Courses(1,"Blue","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com", 78, "Completed","note" );
+        Courses courses = new Courses(1,"Blue","10/22/2022", "10/22/2022","Name","512-647-3381","falcon@falcon.com", 1, "Completed","This is a test note" );
         repo.insert(courses);
 
-        Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022", 55, "note" );
+        Terms terms = new Terms(1,"Term","10/22/2022","10/22/2022", 1, "this is a test note" );
         repo.insert(terms);
     }
 

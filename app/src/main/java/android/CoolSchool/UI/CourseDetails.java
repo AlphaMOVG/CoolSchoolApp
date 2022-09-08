@@ -179,7 +179,7 @@ public class CourseDetails extends AppCompatActivity {
     /**
      * Index selection
      * */
-    public static void selectSpinnerItemByValue(Spinner spnr, long value){
+    public static void selectSpinnerItemByValue(Spinner spnr, int value){
         SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
         for(int postition = 0; postition < adapter.getCount(); postition++){
             if(adapter.getItemId(postition) == value){

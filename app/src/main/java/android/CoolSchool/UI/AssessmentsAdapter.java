@@ -43,6 +43,7 @@ public class AssessmentsAdapter extends RecyclerView.Adapter<AssessmentsAdapter.
     private List<Assessments> mAssessments;
     private final Context context;
     private final LayoutInflater mInflater;
+
     public AssessmentsAdapter(Context context){
         mInflater = LayoutInflater.from(context);
         this.context = context;
