@@ -36,6 +36,9 @@ public class CourseDetails extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
+    String myFormat;
+    String currentDate;
+
 
     TextInputEditText editID;
     TextInputEditText editName;
@@ -64,6 +67,7 @@ public class CourseDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_course_details);
+
 
         /**
          * assigns the variables I created to the IDs of the course details text input fields.
@@ -113,9 +117,42 @@ public class CourseDetails extends AppCompatActivity {
          * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
          * */
         dateText = findViewById(R.id.startDatePicker);
-        String myFormat = "MM/dd/yy";
+        myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
-        String currentDate = sdf.format(new Date());
+        currentDate = sdf.format(new Date());
+        dateText.setText(currentDate);
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date;
+                String info = dateText.getText().toString();
+                try {
+                    myCalendar.setTime(sdf.parse(info));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new DatePickerDialog(CourseDetails.this, myDate, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        myDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+
+
+        /**
+         * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field also need to find out how to set the edit text field to the saved date of the selected item.
+         * */
+        dateText = findViewById(R.id.endDatePicker);
+        myFormat = "MM/dd/yy";
+        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        currentDate = sdf.format(new Date());
         dateText.setText(currentDate);
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,7 +183,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.assessmentsSpinner);
         ArrayList<Assessments> myAssessments = new ArrayList<>();
-        myAssessments.add(new Assessments(1, "assessment", "10/22/2022", "Performance", "note"));
+        myAssessments.add(new Assessments(1, "NEW", "10/22/2022", "Performance", "note"));
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);

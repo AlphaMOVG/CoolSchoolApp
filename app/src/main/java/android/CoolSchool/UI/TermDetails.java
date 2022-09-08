@@ -35,6 +35,8 @@ public class TermDetails extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
+    String myFormat;
+    String currentDate;
 
 
     TextInputEditText editID;
@@ -94,9 +96,41 @@ public class TermDetails extends AppCompatActivity {
          * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
          * */
         dateText = findViewById(R.id.startDatePicker);
-        String myFormat = "MM/dd/yy";
+        myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
-        String currentDate = sdf.format(new Date());
+        currentDate = sdf.format(new Date());
+        dateText.setText(currentDate);
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date;
+                String info = dateText.getText().toString();
+                try {
+                    myCalendar.setTime(sdf.parse(info));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new DatePickerDialog(TermDetails.this, myDate, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        myDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+        };
+
+        /**
+         * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
+         * */
+        dateText = findViewById(R.id.endDatePicker);
+        myFormat = "MM/dd/yy";
+        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        currentDate = sdf.format(new Date());
         dateText.setText(currentDate);
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +161,7 @@ public class TermDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(1, "Blue", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
+        myCourses.add(new Courses(1, "Red", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
