@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +23,7 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -28,6 +35,7 @@ public class CourseDetails extends AppCompatActivity {
     TextInputEditText dateText;
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
+    SimpleDateFormat sdf;
 
     TextInputEditText editID;
     TextInputEditText editName;
@@ -106,7 +114,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         dateText = findViewById(R.id.startDatePicker);
         String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = sdf.format(new Date());
         dateText.setText(currentDate);
         dateText.setOnClickListener(new View.OnClickListener() {
@@ -164,6 +172,10 @@ public class CourseDetails extends AppCompatActivity {
         ArrayAdapter<CharSequence> progressAdapter = ArrayAdapter.createFromResource(this, R.array.course_progress_array, android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         progressSpinner.setAdapter(progressAdapter);
+
+
+
+        // this is the end of the onCreate Method
     }
 
     /**
@@ -191,7 +203,52 @@ public class CourseDetails extends AppCompatActivity {
 
 
 
+    /**
+     * inflates the menu and set items to the menu.
+     */
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.courses_menu, menu);
+        return true;
+    }
 
+    /**
+     * This is the code used to share notes from the share button, notify a user on the day of their assessment, or delete an assessment
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+            case R.id.shareNotes:
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Text from note field"); // how do i add notes here? DON'T FORGET TO ASK!
+                sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
+                sendIntent.setType("text/plain");
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+                return true;
+            case R.id.notify:
+                String dateFromScreen = dateText.getText().toString();
+                Date myDate = null;
+                try {
+                    myDate = sdf.parse(dateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(CourseDetails.this, MyReceiver.class);
+                intent.putExtra("key", "message I want to send");
+                PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, 0);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                return true;
+            case R.id.delete:
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     /**
      * Need to add the date handeling code here

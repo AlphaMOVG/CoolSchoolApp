@@ -3,8 +3,6 @@ package android.CoolSchool.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
-import android.CoolSchool.Entity.Assessments;
-import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -16,18 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.DatePicker;
-import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -83,6 +77,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
+      //  editSpinner.setSelection();
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
@@ -123,7 +118,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * This code sets the array from the value package string file to the spinner in assessment details.
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.typeSpinner);
-        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array,           android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
 
@@ -145,7 +140,7 @@ public class AssessmentDetails extends AppCompatActivity {
      * inflates the menu and set items to the menu.
      */
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.assessment_menu, menu);
+        getMenuInflater().inflate(R.menu.assessments_menu, menu);
         return true;
     }
 
@@ -231,8 +226,8 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
     /**
-     * Need to add the date handeling code here
-     * saving fields when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button, end date picker
+     * Need to add the date handling code here
+     * saving fields when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button, end date picker, also ask about the DAO classes on how to join other tables.
      * */
 }
 
