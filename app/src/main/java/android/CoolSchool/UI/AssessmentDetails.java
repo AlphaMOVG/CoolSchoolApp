@@ -83,9 +83,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-       // editSpinner.setSelection(selectSpinnerItemByValue(typeSpinner, Integer.parseInt(type))); //find out how to properly set these when an item is selected
         editAssessmentNote.setText(note);
-
         repo = new Repository(getApplication());
 
         /**
@@ -129,6 +127,7 @@ public class AssessmentDetails extends AppCompatActivity {
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
 
+
         // This is the end of the onCreate implementation method.
     }
 
@@ -151,7 +150,7 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
     /**
-     * This is the code used to share notes from the share button
+     * This is the code used to share notes from the share button, notify a user on the day of their assessment, or delete an assessment
      */
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -185,7 +184,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 return true;
             case R.id.delete:
                /* for(Assessments a: repo.getAllAssessments()){
-                    if (Courses.getAssessmentID() == editAssessmentIDTxt) currentAssessment = prod;
+                    if (Courses.getAssessmentID() == editAssessmentIDTxt) currentAssessment = a;
                 }
                 numAssessments = 0;
                 for(Courses c: repo.getAllCourses()){
@@ -196,7 +195,7 @@ public class AssessmentDetails extends AppCompatActivity {
                     Toast.makeText(AssessmentsList.this, currentAssessment.getAssessmentName() + "was deleted", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(AssessmentsList.this, "Can't delete an Assessment with an associated course.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AssessmentsList.this, "Can't delete an Assessment thats associated with a course.", Toast.LENGTH_SHORT).show();
                 }
 
                 return true;*/
