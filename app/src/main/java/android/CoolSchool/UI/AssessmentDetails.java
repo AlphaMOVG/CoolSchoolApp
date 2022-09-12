@@ -1,9 +1,6 @@
 package android.CoolSchool.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.CoolSchool.Database.Repository;
-import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -18,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -79,7 +78,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-      //  editSpinner.setSelection(type);
+        editSpinner.setSelection(type);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
@@ -88,7 +87,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
 
         /**
-         * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
+         * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an assessment.
          * */
 
         dateText = findViewById(R.id.assessmentDatePicker);
@@ -125,7 +124,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * This code sets the array from the value package string file to the spinner in assessment details.
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.typeSpinner);
-        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array,           android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array, android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
 
@@ -197,7 +196,7 @@ public class AssessmentDetails extends AppCompatActivity {
                     Toast.makeText(AssessmentsList.this, currentAssessment.getAssessmentName() + "was deleted", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(AssessmentsList.this, "Can't delete an Assessment thats associated with a course.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AssessmentsList.this, "Can't delete an Assessment that's associated with a course.", Toast.LENGTH_SHORT).show();
                 }
 
                 return true;*/
@@ -233,7 +232,7 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
     /**
-     * Need to add the date handling code here
+     * Need to fix date handeling code so that it either populates with data to be modifed or todays date if it is a new assessment.
      * saving fields when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button, end date picker, also ask about the DAO classes on how to join other tables.
      * */
 }
