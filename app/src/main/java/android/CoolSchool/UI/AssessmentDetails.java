@@ -3,6 +3,7 @@ package android.CoolSchool.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -42,7 +43,7 @@ public class AssessmentDetails extends AppCompatActivity {
     int id;
     String name;
     String date;
-    String type;
+    int type;
     String note;
     Repository repo;
 
@@ -61,13 +62,14 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentNote = findViewById(R.id.noteTxt);
 
 
+
         /**
          * assigns the keys of the adapter to the variables I created
          * */
         id = getIntent().getIntExtra("id", 0);
         name = getIntent().getStringExtra("name");
         date = getIntent().getStringExtra("date");
-        type = getIntent().getStringExtra("type");
+        type = getIntent().getIntExtra("type", 1);
         note = getIntent().getStringExtra("notes");
 
 
@@ -77,13 +79,18 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-      //  editSpinner.setSelection();
+      //  editSpinner.setSelection(type);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
+
+
+
+
         /**
-         * building and assigning a calender object to the Edit text field in the app.
+         * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
          * */
+
         dateText = findViewById(R.id.assessmentDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);

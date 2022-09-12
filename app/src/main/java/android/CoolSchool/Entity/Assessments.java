@@ -15,13 +15,13 @@ public class Assessments {
 
     private String assessmentName;
     private String assessmentDate;
-    private String assessmentType;
+    private int assessmentType;
     private String notes;
 
 
 
 
-    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, String assessmentType, String notes) {
+    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, int assessmentType, String notes) {
         this.assessmentsID = assessmentsID;
         this.assessmentName = assessmentName;
         this.assessmentDate = assessmentDate;
@@ -60,11 +60,11 @@ public class Assessments {
         this.assessmentDate = assessmentDate;
     }
 
-    public String getAssessmentType() {
+    public int getAssessmentType() {
         return assessmentType;
     }
 
-    public void setAssessmentType(String assessmentType) {
+    public void setAssessmentType(int assessmentType) {
         this.assessmentType = assessmentType;
     }
 

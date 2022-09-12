@@ -93,7 +93,7 @@ public class TermDetails extends AppCompatActivity {
         repo = new Repository(getApplication());
 
         /**
-         * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
+         * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
         dateText = findViewById(R.id.startDatePicker);
         myFormat = "MM/dd/yy";
@@ -125,7 +125,7 @@ public class TermDetails extends AppCompatActivity {
         };
 
         /**
-         * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
+         * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
         dateText = findViewById(R.id.endDatePicker);
         myFormat = "MM/dd/yy";
@@ -161,7 +161,7 @@ public class TermDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(1, "Red", "10/22/2022", "10/22/2022", "Bob", "512-777-7777", "falcon@falcon.com", 45, "In progress", "note"));
+        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, "", ""));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
