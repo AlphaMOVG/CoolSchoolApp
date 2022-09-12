@@ -59,7 +59,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
         editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
-
+// new item to commit
 
 
         /**
