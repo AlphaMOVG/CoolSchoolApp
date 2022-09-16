@@ -42,7 +42,7 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermsViewHol
         }
     }
 //
-
+//
     private List<Terms> mTerms;
     private final Context context;
     private final LayoutInflater mInflater;
