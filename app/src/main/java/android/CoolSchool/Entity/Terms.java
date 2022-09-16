@@ -13,17 +13,17 @@ public class Terms {
     private String termName;
     private String start;
     private String end;
-    private int courseID;
+
     private String notes;
 
 
-
-    public Terms(int termsID, String termName, String start, String end, int courseID, String notes) {
+//work on this
+    public Terms(int termsID, String termName, String start, String end,  String notes) {
         this.termsID = termsID;
         this.termName = termName;
         this.start = start;
         this.end = end;
-        this.courseID = courseID;
+
         this.notes = notes;
     }
 
@@ -64,13 +64,9 @@ public class Terms {
         this.end = end;
     }
 
-    public int getCourseID() {
-        return courseID;
-    }
 
-    public void setCourseID(int courseID) {
-        this.courseID = courseID;
-    }
+
+
 
     public String getNotes() {
         return notes;

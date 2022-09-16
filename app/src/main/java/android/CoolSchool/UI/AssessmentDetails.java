@@ -1,6 +1,10 @@
 package android.CoolSchool.UI;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Assessments;
+import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -11,17 +15,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -59,7 +64,7 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
         editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
-// new item to commit
+
 
 
         /**
@@ -78,7 +83,6 @@ public class AssessmentDetails extends AppCompatActivity {
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
         editAssessmentDatePicker.setText(date);
-        editSpinner.setSelection(type);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
@@ -87,13 +91,19 @@ public class AssessmentDetails extends AppCompatActivity {
 
 
         /**
-         * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an assessment.
+         * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
          * */
 
         dateText = findViewById(R.id.assessmentDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
-        String currentDate = sdf.format(new Date());
+        String currentDate = null;
+        if(date != null){
+            currentDate = date;
+        }
+        else{
+            currentDate = sdf.format(new Date());
+        }
         dateText.setText(currentDate);
         dateText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,14 +129,37 @@ public class AssessmentDetails extends AppCompatActivity {
             }
         };
 
+        /**
+         * This is where the spinner is populated with information from the added assessments
+         * */
+        Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
+        ArrayList<Courses> myCourses = new ArrayList<>();
+        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, "", ""));
+        ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
+        courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        courseSpinner.setAdapter(courseAdapter);
+
+        courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(AssessmentDetails.this,myCourses.get(i).toString(),Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // another interface callback
+            }
+        });
+
 
         /**
          * This code sets the array from the value package string file to the spinner in assessment details.
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.typeSpinner);
-        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array,           android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
+        editSpinner.setSelection(type);
 
 
         // This is the end of the onCreate implementation method.
@@ -162,7 +195,7 @@ public class AssessmentDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Text from note field"); // how do i add notes here? DON'T FORGET TO ASK!
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentNote.getText()); // how do i add notes here? DON'T FORGET TO ASK!
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -178,28 +211,25 @@ public class AssessmentDetails extends AppCompatActivity {
                 }
                 Long trigger = myDate.getTime();
                 Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
-                intent.putExtra("key", "message I want to send");
-                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, 0);
+                intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;
             case R.id.delete:
-               /* for(Assessments a: repo.getAllAssessments()){
-                    if (Courses.getAssessmentID() == editAssessmentIDTxt) currentAssessment = a;
-                }
-                numAssessments = 0;
-                for(Courses c: repo.getAllCourses()){
-                    if(c.getAssessmentID() == editAssessmentIDTxt) ++numAssessments;
-                }
-                if(numAssessments == 0){
-                    repo.delete(currentAssessment);
-                    Toast.makeText(AssessmentsList.this, currentAssessment.getAssessmentName() + "was deleted", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(AssessmentsList.this, "Can't delete an Assessment that's associated with a course.", Toast.LENGTH_SHORT).show();
+                Assessments currentAssessment = null;
+                for(Assessments a: repo.getAllAssessments()){
+                    if (a.getAssessmentsID() == Integer.parseInt(editAssessmentIDTxt.getText().toString())) currentAssessment = a;
                 }
 
-                return true;*/
+                    repo.delete(currentAssessment);
+                    if(currentAssessment != null){
+                        Toast.makeText(AssessmentDetails.this, currentAssessment.getAssessmentName() + "was deleted", Toast.LENGTH_SHORT).show();
+                    }
+
+
+
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -232,7 +262,7 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
     /**
-     * Need to fix date handeling code so that it either populates with data to be modifed or todays date if it is a new assessment.
+     * Need to add the date handling code here
      * saving fields when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button, end date picker, also ask about the DAO classes on how to join other tables.
      * */
 }

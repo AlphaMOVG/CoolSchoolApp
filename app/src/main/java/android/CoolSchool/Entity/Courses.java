@@ -15,12 +15,12 @@ public class Courses {
     private String cIName;
     private String cIPhoneNumber;
     private String cIEMail;
-    private int assessmentID;
+    private int termID;
     private String status;
     private String notes;
 
-
-    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail, int assessmentID, String status, String notes) {
+// termID in course entity
+    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail, int termID, String status, String notes) {
         this.coursesID = coursesID;
         this.courseName = courseName;
         this.start = start;
@@ -29,7 +29,7 @@ public class Courses {
         this.cIPhoneNumber = cIPhoneNumber;
         this.cIEMail = cIEMail;
         this.status = status;
-        this.assessmentID = assessmentID;
+        this.termID = termID;
         this.notes = notes;
     }
 
@@ -101,12 +101,12 @@ public class Courses {
         this.cIEMail = cIEMail;
     }
 
-    public int getAssessmentID() {
-        return assessmentID;
+    public int getTermID() {
+        return termID;
     }
 
-    public void setAssessmentID(int assessmentID) {
-        this.assessmentID = assessmentID;
+    public void setTermID(int termID) {
+        this.termID = termID;
     }
 
     public String getStatus() {

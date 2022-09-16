@@ -156,27 +156,7 @@ public class TermDetails extends AppCompatActivity {
             }
         };
 
-        /**
-         * This is where the spinner is populated with information from the added assessments
-         * */
-        Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
-        ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, "", ""));
-        ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
-        courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        courseSpinner.setAdapter(courseAdapter);
-
-        courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(TermDetails.this,myCourses.get(i).toString(),Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                // another interface callback
-            }
-        });
+// this is the end of the onCreate Method.
     }
 
     /**

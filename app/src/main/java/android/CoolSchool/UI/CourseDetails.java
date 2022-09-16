@@ -183,7 +183,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.assessmentsSpinner);
         ArrayList<Assessments> myAssessments = new ArrayList<>();
-        myAssessments.add(new Assessments(-1, "None", "", 1, ""));
+        myAssessments.add(new Assessments(-1, "None", "", 1, "", 1));
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
