@@ -37,7 +37,7 @@
             android:layout_height="match_parent"
             android:editable="false"
             android:hint="Course ID"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -56,7 +56,7 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="Course Name"
-            android:textColor="#FDFEFF"
+            android:textColor="#091970"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="Start Date"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +92,7 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="End Date"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -110,7 +110,7 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="C.I. Name"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -127,7 +127,7 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="C.I. Phone #"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -146,32 +146,50 @@
             android:layout_width="208dp"
             android:layout_height="match_parent"
             android:hint="C.I. E-Mail"
-            android:textColor="#FDFEFF" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
         android:id="@+id/termsSpinner"
-        android:layout_width="331dp"
+        android:layout_width="208dp"
         android:layout_height="46dp"
         android:layout_marginTop="460dp"
         android:background="#4B4C50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.158"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Spinner
         android:id="@+id/statusSpinner"
-        android:layout_width="332dp"
+        android:layout_width="208dp"
         android:layout_height="42dp"
         android:layout_marginTop="516dp"
         android:background="#4B4C50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.148"
+        app:layout_constraintHorizontal_bias="0.068"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout7"
+        android:layout_width="373dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="568dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.325"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/notesTxt"
+            android:layout_width="208dp"
+            android:layout_height="match_parent"
+            android:hint="Notes"
+            android:textColor="#091970" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/saveButton"
@@ -186,34 +204,18 @@
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
-        android:layout_width="373dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="568dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notesTxt"
-            android:layout_width="330dp"
-            android:layout_height="match_parent"
-            android:hint="Notes" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/assessmentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="636dp"
+        android:layout_marginTop="672dp"
         android:backgroundTint="#091970"
         android:onClick="associatedAssessments"
         android:text="Associated Assessments"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

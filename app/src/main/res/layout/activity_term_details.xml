@@ -37,7 +37,7 @@
             android:layout_height="62dp"
             android:editable="false"
             android:hint="Term ID"
-            android:textColor="#FBFAFA" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -55,7 +55,7 @@
             android:layout_width="278dp"
             android:layout_height="match_parent"
             android:hint="Term Name"
-            android:textColor="#FBFAFA" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -70,10 +70,10 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/startDatePicker"
-            android:layout_width="275dp"
+            android:layout_width="278dp"
             android:layout_height="match_parent"
             android:hint="Start Date"
-            android:textColor="#FBFAFA" />
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -88,10 +88,28 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/endDatePicker"
-            android:layout_width="275dp"
+            android:layout_width="278dp"
             android:layout_height="match_parent"
             android:hint="End Date"
-            android:textColor="#FBFAFA" />
+            android:textColor="#091970" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout11"
+        android:layout_width="342dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="404dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/notesTxt"
+            android:layout_width="278dp"
+            android:layout_height="match_parent"
+            android:hint="Notes"
+            android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -107,28 +125,11 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout11"
-        android:layout_width="342dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="404dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notesTxt"
-            android:layout_width="285dp"
-            android:layout_height="match_parent"
-            android:hint="Notes" />
-    </com.google.android.material.textfield.TextInputLayout>
-
     <Button
         android:id="@+id/coursesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="532dp"
+        android:layout_marginTop="568dp"
         android:backgroundTint="#091970"
         android:onClick="associatedCourses"
         android:text="View associated courses"

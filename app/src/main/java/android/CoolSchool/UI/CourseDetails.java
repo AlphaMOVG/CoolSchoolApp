@@ -194,10 +194,14 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner termSpinner = (Spinner) findViewById(R.id.termsSpinner);
         ArrayList<Terms> myTerms = new ArrayList<>();
+        myTerms.addAll(repo.getAllTerms());
         ArrayAdapter<Terms> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myTerms);
         termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         termSpinner.setAdapter(termAdapter);
-     //   selectSpinnerItemByValue(termSpinner, termsID);
+        selectSpinnerItemByValue(termSpinner, -1);
+        for(int i  = 0 ; i < myTerms.size(); i++) {
+            if (myTerms.get(i).getTermsID() == termsID) termSpinner.setSelection(i);
+        }
 
 
         termSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

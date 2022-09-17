@@ -177,12 +177,15 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
+        myCourses.addAll(repo.getAllCourses());
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
        // courseSpinner.setSelection(course);
-      //  selectSpinnerItemByValue(courseSpinner, -1);
-
+        selectSpinnerItemByValue(courseSpinner, -1);
+        for(int i  = 0 ; i < myCourses.size(); i++){
+            if(myCourses.get(i).getCoursesID() == course) courseSpinner.setSelection(i);
+        }
 
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
