@@ -10,6 +10,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="28dp"
         android:background="@color/white"
         android:text="TextView"
         android:textColor="#091970"

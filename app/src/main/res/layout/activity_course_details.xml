@@ -207,7 +207,7 @@
         android:id="@+id/assessmentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="672dp"
+        android:layout_marginTop="636dp"
         android:backgroundTint="#091970"
         android:onClick="associatedAssessments"
         android:text="Associated Assessments"

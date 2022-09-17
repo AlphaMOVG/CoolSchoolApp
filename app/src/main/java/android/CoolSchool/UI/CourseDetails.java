@@ -194,11 +194,10 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner assessmentSpinner = (Spinner) findViewById(R.id.termsSpinner);
         ArrayList<Assessments> myAssessments = new ArrayList<>();
-        myAssessments.add(new Assessments(-1, "None", "", "", 1, "", 1));
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
-        selectSpinnerItemByValue(editTermsSpin, termsID);
+        selectSpinnerItemByValue(assessmentSpinner, termsID);
 
 
         assessmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -282,7 +281,7 @@ public class CourseDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText());
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText().toString());
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -332,7 +331,7 @@ public class CourseDetails extends AppCompatActivity {
     }
 
     /**
-     * Need to add the date handeling code here
+     *
      * Need to add the save,
      * */
 }

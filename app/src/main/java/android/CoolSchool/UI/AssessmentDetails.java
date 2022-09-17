@@ -179,11 +179,10 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, 0, ""));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
-        selectSpinnerItemByValue(editCourseSpinner, course);
+        selectSpinnerItemByValue(courseSpinner, course);
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -250,7 +249,7 @@ public class AssessmentDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentNote.getText());
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentNote.getText().toString());
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
