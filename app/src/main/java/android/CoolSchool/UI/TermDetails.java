@@ -238,6 +238,8 @@ public class TermDetails extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
+                Toast.makeText(TermDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
+
                 return true;
             case R.id.delete:
 

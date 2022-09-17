@@ -91,8 +91,6 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
-     //   editAssessmentStartDatePicker.setText(startDate);
-      //  editAssessmentEndDatePicker.setText(endDate);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
@@ -182,7 +180,10 @@ public class AssessmentDetails extends AppCompatActivity {
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
-        selectSpinnerItemByValue(courseSpinner, course);
+       // courseSpinner.setSelection(course);
+      //  selectSpinnerItemByValue(courseSpinner, -1);
+
+
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -200,10 +201,10 @@ public class AssessmentDetails extends AppCompatActivity {
         /**
          * This code sets the array from the value package string file to the spinner in assessment details.
          * */
-        Spinner assessmentSpinner = (Spinner) findViewById(R.id.typeSpinner);
+        Spinner assessmentTypeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         ArrayAdapter<CharSequence> assessmentAdapter = ArrayAdapter.createFromResource(this, R.array.assessment_types_array,           android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        assessmentSpinner.setAdapter(assessmentAdapter);
+        assessmentTypeSpinner.setAdapter(assessmentAdapter);
         editSpinner.setSelection(type);
 
 
@@ -279,6 +280,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
+                Toast.makeText(AssessmentDetails.this, "Alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.delete:
                 Assessments currentAssessment = null;

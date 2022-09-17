@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
+import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -103,8 +104,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         editID.setText(Integer.toString(id));
         editName.setText(name);
-       // editStart.setText(start);
-       // editEnd.setText(end);
+
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
@@ -192,18 +192,18 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * This is where the spinner is populated with information from the added assessments
          * */
-        Spinner assessmentSpinner = (Spinner) findViewById(R.id.termsSpinner);
-        ArrayList<Assessments> myAssessments = new ArrayList<>();
-        ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
-        assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        assessmentSpinner.setAdapter(assessmentAdapter);
-        selectSpinnerItemByValue(assessmentSpinner, termsID);
+        Spinner termSpinner = (Spinner) findViewById(R.id.termsSpinner);
+        ArrayList<Terms> myTerms = new ArrayList<>();
+        ArrayAdapter<Terms> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myTerms);
+        termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        termSpinner.setAdapter(termAdapter);
+     //   selectSpinnerItemByValue(termSpinner, termsID);
 
 
-        assessmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        termSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(CourseDetails.this,myAssessments.get(i).toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(CourseDetails.this,myTerms.get(i).toString(),Toast.LENGTH_LONG).show();
             }
 
             @Override
@@ -219,7 +219,7 @@ public class CourseDetails extends AppCompatActivity {
          * */
         Spinner progressSpinner = (Spinner) findViewById(R.id.statusSpinner);
         ArrayAdapter<CharSequence> progressAdapter = ArrayAdapter.createFromResource(this, R.array.course_progress_array, android.R.layout.simple_spinner_item);
-        assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
+        termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         progressSpinner.setAdapter(progressAdapter);
         editStatusSpin.setSelection(status);
 
@@ -311,6 +311,8 @@ public class CourseDetails extends AppCompatActivity {
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
+                Toast.makeText(CourseDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
+
                 return true;
             case R.id.delete:
 
