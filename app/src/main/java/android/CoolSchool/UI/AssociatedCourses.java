@@ -31,13 +31,19 @@ public class AssociatedCourses extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_termlist, menu);
+        getMenuInflater().inflate(R.menu.refresh_menu, menu);
         return true;
     }
+
+    /**
+     * sets a menu item of refresh and and give functionality to the refresh button.
+     * */
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case android.R.id.home:
                 this.finish();
+                return true;
+            case R.id.refresh:
                 return true;
         }
         return super.onOptionsItemSelected(item);

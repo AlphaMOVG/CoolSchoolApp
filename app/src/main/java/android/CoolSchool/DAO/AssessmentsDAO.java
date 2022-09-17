@@ -28,4 +28,5 @@ public interface AssessmentsDAO {
 
    /* @Query("SELECT * FROM Assessments WHERE courseID = :courseID")
     List<Assessments> getAllAssessmentsByCourseID(int termID);*/
+    //association query here
 }

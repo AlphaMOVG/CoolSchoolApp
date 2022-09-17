@@ -32,13 +32,15 @@ public class TermsList extends AppCompatActivity {
         adapter.setTerms(terms);
     }
         public boolean onCreateOptionsMenu(Menu menu){
-            getMenuInflater().inflate(R.menu.menu_termlist, menu);
+            getMenuInflater().inflate(R.menu.refresh_menu, menu);
             return true;
         }
         public boolean onOptionsItemSelected(MenuItem item){
             switch (item.getItemId()){
                 case android.R.id.home:
                     this.finish();
+                    return true;
+                case R.id.refresh:
                     return true;
             }
                 return super.onOptionsItemSelected(item);
