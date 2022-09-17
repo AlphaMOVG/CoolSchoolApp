@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.R;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,13 +20,16 @@ public class AssociatedAssessments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_associated_assessments);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView recyclerView = findViewById(R.id.associatedAssessmentRecycler);
         Repository repo = new Repository(getApplication());
-       // List<Assessments> assessments = repo.getAllAssessments();
+        int courseID = getIntent().getIntExtra("id", -1);
+        List<Assessments> assessments = repo.getAllAssessmentsByCourseID(courseID);
         final AssessmentsAdapter adapter = new AssessmentsAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-       // adapter.setAssessments(assessments);
+        adapter.setAssessments(assessments);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -42,6 +46,14 @@ public class AssociatedAssessments extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.refresh:
+                RecyclerView recyclerView = findViewById(R.id.associatedAssessmentRecycler);
+                Repository repo = new Repository(getApplication());
+                int courseID = getIntent().getIntExtra("id", -1);
+                List<Assessments> assessments = repo.getAllAssessmentsByCourseID(courseID);
+                final AssessmentsAdapter adapter = new AssessmentsAdapter(this);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                adapter.setAssessments(assessments);
                 return true;
         }
         return super.onOptionsItemSelected(item);

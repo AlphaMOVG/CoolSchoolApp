@@ -41,6 +41,13 @@ public class TermsList extends AppCompatActivity {
                     this.finish();
                     return true;
                 case R.id.refresh:
+                    RecyclerView recyclerView = findViewById(R.id.termRecycler);
+                    Repository repo = new Repository(getApplication());
+                    List<Terms> terms = repo.getAllTerms();
+                    final TermsAdapter adapter = new TermsAdapter(this);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    adapter.setTerms(terms);
                     return true;
             }
                 return super.onOptionsItemSelected(item);

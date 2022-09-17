@@ -103,8 +103,8 @@ public class CourseDetails extends AppCompatActivity {
          * */
         editID.setText(Integer.toString(id));
         editName.setText(name);
-        editStart.setText(start);
-        editEnd.setText(end);
+       // editStart.setText(start);
+       // editEnd.setText(end);
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
@@ -115,7 +115,7 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to assign the date picker to another edit text field
          * */
-        startDateText = findViewById(R.id.StartDatePicker);
+        startDateText = findViewById(R.id.startDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = null;
@@ -154,7 +154,7 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        endDateText = findViewById(R.id.EndDatePicker);
+        endDateText = findViewById(R.id.endDatePicker);
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
@@ -251,7 +251,7 @@ public class CourseDetails extends AppCompatActivity {
      * Index selection
      * */
     public static void selectSpinnerItemByValue(Spinner spnr, int value){
-        SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
+        ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();
         for(int postition = 0; postition < adapter.getCount(); postition++){
             if(adapter.getItemId(postition) == value){
                 spnr.setSelection(postition);
@@ -323,10 +323,11 @@ public class CourseDetails extends AppCompatActivity {
 
 
     /**
-     * onClick action for the associated assessments button
+     * onClick action for the associated assessments button this also uses a hand shake to pass the id data to the associated assessments activity.
      * */
     public void associatedAssessments(View view) {
         Intent intent = new Intent(CourseDetails.this, AssociatedAssessments.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 

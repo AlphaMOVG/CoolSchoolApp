@@ -91,8 +91,8 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
-        editAssessmentStartDatePicker.setText(startDate);
-        editAssessmentEndDatePicker.setText(endDate);
+     //   editAssessmentStartDatePicker.setText(startDate);
+      //  editAssessmentEndDatePicker.setText(endDate);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
 
@@ -312,7 +312,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
 
     public static void selectSpinnerItemByValue(Spinner spnr, int value) {
-        SimpleCursorAdapter adapter = (SimpleCursorAdapter) spnr.getAdapter();
+        ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();
         for (int position = 0; position < adapter.getCount(); position++) {
             if (adapter.getItemId(position) == value) {
                 spnr.setSelection(position);

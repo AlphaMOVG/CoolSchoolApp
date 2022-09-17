@@ -44,6 +44,13 @@ public class CoursesList extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.refresh:
+                RecyclerView recyclerView = findViewById(R.id.courseRecycler);
+                Repository repo = new Repository(getApplication());
+                List<Courses> courses = repo.getAllCourses();
+                final CoursesAdapter adapter = new CoursesAdapter(this);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                adapter.setCourses(courses);
                 return true;
         }
         return super.onOptionsItemSelected(item);

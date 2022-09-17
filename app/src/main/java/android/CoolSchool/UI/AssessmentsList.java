@@ -23,13 +23,13 @@ public class AssessmentsList extends AppCompatActivity {
         setContentView(R.layout.activity_assessmentslist);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        RecyclerView recyclerView = findViewById(R.id.assessmentRecycler);
+        RecyclerView recyclerView = findViewById(R.id.assessmentRecycler); //654654654
         Repository repo = new Repository(getApplication());
         List<Assessments> assessments = repo.getAllAssessments();
         final AssessmentsAdapter adapter = new AssessmentsAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setAssessments(assessments);
+        adapter.setAssessments(assessments); //65465444
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -42,6 +42,13 @@ public class AssessmentsList extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.refresh:
+                RecyclerView recyclerView = findViewById(R.id.assessmentRecycler);
+                Repository repo = new Repository(getApplication());
+                List<Assessments> assessments = repo.getAllAssessments();
+                final AssessmentsAdapter adapter = new AssessmentsAdapter(this);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                adapter.setAssessments(assessments);
                 return true;
         }
         return super.onOptionsItemSelected(item);

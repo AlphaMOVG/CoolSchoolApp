@@ -23,11 +23,12 @@ public class AssociatedCourses extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView recyclerView = findViewById(R.id.associatedCourseRecycler);
         Repository repo = new Repository(getApplication());
-      //  List<Courses> courses = repo.getAllCourses();
+        int termID = getIntent().getIntExtra("id", -1);
+        List<Courses> courses = repo.getAllCoursesByTermID(termID);
         final CoursesAdapter adapter = new CoursesAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-       // adapter.setCourses(courses);
+        adapter.setCourses(courses);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
@@ -44,6 +45,14 @@ public class AssociatedCourses extends AppCompatActivity {
                 this.finish();
                 return true;
             case R.id.refresh:
+                RecyclerView recyclerView = findViewById(R.id.associatedCourseRecycler);
+                Repository repo = new Repository(getApplication());
+                int termID = getIntent().getIntExtra("id", -1);
+                List<Courses> courses = repo.getAllCoursesByTermID(termID);
+                final CoursesAdapter adapter = new CoursesAdapter(this);
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                adapter.setCourses(courses);
                 return true;
         }
         return super.onOptionsItemSelected(item);

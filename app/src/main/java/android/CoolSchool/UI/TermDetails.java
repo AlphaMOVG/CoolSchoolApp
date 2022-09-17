@@ -92,7 +92,7 @@ public class TermDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        startDateText = findViewById(R.id.StartDatePicker);
+        startDateText = findViewById(R.id.startDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = null;
@@ -130,7 +130,7 @@ public class TermDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        endDateText = findViewById(R.id.EndDatePicker);
+        endDateText = findViewById(R.id.endDatePicker);
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
@@ -250,6 +250,7 @@ public class TermDetails extends AppCompatActivity {
      * */
     public void associatedCourses(View view) {
         Intent intent = new Intent(TermDetails.this, AssociatedCourses.class);
+        intent.putExtra("id", id);
         startActivity(intent);
     }
 
