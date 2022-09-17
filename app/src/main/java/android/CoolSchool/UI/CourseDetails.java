@@ -47,7 +47,7 @@ public class CourseDetails extends AppCompatActivity {
     TextInputEditText editCIName;
     TextInputEditText editCIPhone;
     TextInputEditText editCIMail;
-    Spinner editAssessmentsSpin;
+    Spinner editTermsSpin;
     Spinner editStatusSpin;
     TextInputEditText editNote;
 
@@ -58,8 +58,8 @@ public class CourseDetails extends AppCompatActivity {
     String cIName;
     String cINumber;
     String cIEM;
-    int assessmentID;
-    String status;
+    int termsID;
+    int status;
     String note;
     Repository repo;
 
@@ -79,22 +79,22 @@ public class CourseDetails extends AppCompatActivity {
         editCIName = findViewById(R.id.cINameTxt);
         editCIPhone = findViewById(R.id.cIPhoneTxt);
         editCIMail = findViewById(R.id.cIEmailTxt);
-        editAssessmentsSpin = findViewById(R.id.termsSpinner);
+        editTermsSpin = findViewById(R.id.termsSpinner);
         editStatusSpin = findViewById(R.id.statusSpinner);
         editNote = findViewById(R.id.notesTxt);
 
         /**
          * assigns the keys of the adapter to the variables I created
          * */
-        id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
         start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
         cIName = getIntent().getStringExtra("ciname");
         cINumber = getIntent().getStringExtra("cinumber");
         cIEM = getIntent().getStringExtra("ciemail");
-        assessmentID = getIntent().getIntExtra("assessid", 0);
-        status = getIntent().getStringExtra("status");
+        termsID = getIntent().getIntExtra("termid", -1);
+        status = getIntent().getIntExtra("status", -1);
         note = getIntent().getStringExtra("notes");
 
         /**
@@ -107,8 +107,7 @@ public class CourseDetails extends AppCompatActivity {
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
-        editAssessmentsSpin.setSelection(assessmentID); //find out how to properly set these when an item is selected
-       // editStatusSpin.setSelection(status);// find out how to properly set these when an item is selected
+        //find out how to properly set these when an item is selected
         editNote.setText(note);
 
         repo = new Repository(getApplication());
@@ -187,6 +186,8 @@ public class CourseDetails extends AppCompatActivity {
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);
+        selectSpinnerItemByValue(editTermsSpin, termsID);
+
 
         assessmentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -209,6 +210,7 @@ public class CourseDetails extends AppCompatActivity {
         ArrayAdapter<CharSequence> progressAdapter = ArrayAdapter.createFromResource(this, R.array.course_progress_array, android.R.layout.simple_spinner_item);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         progressSpinner.setAdapter(progressAdapter);
+        editStatusSpin.setSelection(status);
 
 
 
@@ -260,7 +262,7 @@ public class CourseDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Text from note field"); // how do i add notes here? DON'T FORGET TO ASK!
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText()); // how do i add notes here? DON'T FORGET TO ASK!
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -277,7 +279,7 @@ public class CourseDetails extends AppCompatActivity {
                 Long trigger = myDate.getTime();
                 Intent intent = new Intent(CourseDetails.this, MyReceiver.class);
                 intent.putExtra("key", "message I want to send");
-                PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, 0);
+                PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 return true;

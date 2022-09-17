@@ -32,7 +32,8 @@ import java.util.Date;
 import java.util.Locale;
 
 public class AssessmentDetails extends AppCompatActivity {
-    TextInputEditText dateText;
+    TextInputEditText startDateText;
+    TextInputEditText endDateText;
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
@@ -80,7 +81,7 @@ public class AssessmentDetails extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         startDate = getIntent().getStringExtra("startdate");
         endDate = getIntent().getStringExtra("enddate");
-        type = getIntent().getIntExtra("type", 1);
+        type = getIntent().getIntExtra("type", -1);
         note = getIntent().getStringExtra("notes");
         course = getIntent().getIntExtra("courseid", -1);
 
@@ -100,7 +101,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
          * */
 
-        dateText = findViewById(R.id.StartDatePicker);
+        startDateText = findViewById(R.id.StartDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = null;
@@ -110,12 +111,12 @@ public class AssessmentDetails extends AppCompatActivity {
         else{
             currentDate = sdf.format(new Date());
         }
-        dateText.setText(currentDate);
-        dateText.setOnClickListener(new View.OnClickListener() {
+        startDateText.setText(currentDate);
+        startDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = dateText.getText().toString();
+                String info = startDateText.getText().toString();
                 try {
                     myCalendar.setTime(sdf.parse(info));
                 } catch (Exception e) {
@@ -138,7 +139,7 @@ public class AssessmentDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        dateText = findViewById(R.id.EndDatePicker);
+        endDateText = findViewById(R.id.EndDatePicker);
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
@@ -148,12 +149,12 @@ public class AssessmentDetails extends AppCompatActivity {
         else{
             currentDateEnd = sdf.format(new Date());
         }
-        dateText.setText(currentDateEnd);
-        dateText.setOnClickListener(new View.OnClickListener() {
+        endDateText.setText(currentDateEnd);
+        endDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = dateText.getText().toString();
+                String info = endDateText.getText().toString();
                 try {
                     myCalendar.setTime(sdf.parse(info));
                 } catch (Exception e) {
@@ -178,7 +179,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
         ArrayList<Courses> myCourses = new ArrayList<>();
-        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, "", ""));
+        myCourses.add(new Courses(-1, "None", "", "", "", "", "", -1, 0, ""));
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
@@ -216,7 +217,7 @@ public class AssessmentDetails extends AppCompatActivity {
     private void updateLabelStart() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        dateText.setText(sdf.format(myCalendar.getTime()));
+        startDateText.setText(sdf.format(myCalendar.getTime()));
     }
 
     /**
@@ -225,7 +226,7 @@ public class AssessmentDetails extends AppCompatActivity {
     private void updateLabelEnd() {
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        dateText.setText(sdf.format(myCalendar.getTime()));
+        endDateText.setText(sdf.format(myCalendar.getTime()));
     }
 
 
@@ -256,19 +257,29 @@ public class AssessmentDetails extends AppCompatActivity {
                 startActivity(shareIntent);
                 return true;
             case R.id.notify:
-                String dateFromScreen = dateText.getText().toString();
+                String dateFromScreen = startDateText.getText().toString();
+                String endDateFromScreen = endDateText.getText().toString();
                 Date myDate = null;
+                Date myEndDate = null;
                 try {
                     myDate = sdf.parse(dateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                try {
+                    myEndDate = sdf.parse(endDateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 Long trigger = myDate.getTime();
+                Long secondTrigger = myEndDate.getTime();
                 Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
                 intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
+                intent.putExtra("key", editAssessmentNameTxt.getText() + " "+ " ends today");
                 PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
                 return true;
             case R.id.delete:
                 Assessments currentAssessment = null;

@@ -22,7 +22,7 @@ public interface CoursesDAO {
     @Delete
     void delete(Courses courses);
 
-    @Query("SELECT * FROM Courses ORDER BY coursesID ASC ") //WHERE Courses.termID = .assessmentsID find out why this isn't working
+    @Query("SELECT * FROM Courses ORDER BY coursesID ASC ")
     List<Courses> getAllCourses();
 
     @Query("SELECT * FROM COURSES WHERE termID = :termID")

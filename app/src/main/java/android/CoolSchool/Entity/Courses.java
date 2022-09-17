@@ -16,11 +16,11 @@ public class Courses {
     private String cIPhoneNumber;
     private String cIEMail;
     private int termID;
-    private String status;
+    private int status;
     private String notes;
 
-// termID in course entity
-    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail, int termID, String status, String notes) {
+
+    public Courses(int coursesID, String courseName, String start, String end, String cIName, String cIPhoneNumber, String cIEMail, int termID, int status, String notes) {
         this.coursesID = coursesID;
         this.courseName = courseName;
         this.start = start;
@@ -35,94 +35,114 @@ public class Courses {
 
     @Override
     public String toString() {
+
         return this.courseName;
     }
 
 
     public int getCoursesID() {
+
         return coursesID;
     }
 
     public void setCoursesID(int coursesID) {
+
         this.coursesID = coursesID;
     }
 
 
     public String getCourseName() {
+
         return courseName;
     }
 
     public void setCourseName(String courseName) {
+
         this.courseName = courseName;
     }
 
 
     public String getStart() {
+
         return start;
     }
 
     public void setStart(String start) {
+
         this.start = start;
     }
 
 
     public String getEnd() {
+
         return end;
     }
 
     public void setEnd(String end) {
+
         this.end = end;
     }
 
 
     public String getCIName() {
+
         return cIName;
     }
 
     public void setCIName(String cIName) {
+
         this.cIName = cIName;
     }
 
 
     public String getCIPhoneNumber() {
+
         return cIPhoneNumber;
     }
 
     public void setCIPhoneNumber(String cIPhoneNumber) {
+
         this.cIPhoneNumber = cIPhoneNumber;
     }
 
 
     public String getCIEMail() {
+
         return cIEMail;
     }
 
     public void setCIEMail(String cIEMail) {
+
         this.cIEMail = cIEMail;
     }
 
     public int getTermID() {
+
         return termID;
     }
 
     public void setTermID(int termID) {
+
         this.termID = termID;
     }
 
-    public String getStatus() {
+    public int getStatus() {
+
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
+
         this.status = status;
     }
 
     public String getNotes() {
+
         return notes;
     }
 
     public void setNotes(String notes) {
-        notes = notes;
+        this.notes = notes;
     }
 }
 

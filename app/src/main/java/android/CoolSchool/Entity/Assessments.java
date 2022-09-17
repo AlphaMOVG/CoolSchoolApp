@@ -34,10 +34,9 @@ public class Assessments {
 
     @Override
     public String toString() {
+
         return  this.assessmentName;
     }
-
-
 
     public int getAssessmentsID() {
 
@@ -60,6 +59,7 @@ public class Assessments {
     }
 
     public String getAssessmentStartDate() {
+
         return assessmentStartDate;
     }
 
@@ -68,6 +68,7 @@ public class Assessments {
     }
 
     public String getAssessmentEndDate() {
+
         return assessmentEndDate;
     }
 
@@ -95,10 +96,12 @@ public class Assessments {
     }
 
     public int getCourseID() {
+
         return courseID;
     }
 
     public void setCourseID(int courseID) {
+
         this.courseID = courseID;
     }
 }
