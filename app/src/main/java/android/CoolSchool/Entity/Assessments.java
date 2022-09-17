@@ -14,18 +14,19 @@ public class Assessments {
     private int assessmentsID;
 
     private String assessmentName;
-    private String assessmentDate;
+    private String assessmentStartDate;
+    private String assessmentEndDate;
     private int assessmentType;
     private String notes;
     private int courseID;
 
 
 
-    // courseID in assessment entity
-    public Assessments(int assessmentsID, String assessmentName, String assessmentDate, int assessmentType, String notes, int courseID) {
+    public Assessments(int assessmentsID, String assessmentName, String assessmentStartDate, String assessmentEndDate, int assessmentType, String notes, int courseID) {
         this.assessmentsID = assessmentsID;
         this.assessmentName = assessmentName;
-        this.assessmentDate = assessmentDate;
+        this.assessmentStartDate = assessmentStartDate;
+        this.assessmentEndDate = assessmentEndDate;
         this.assessmentType = assessmentType;
         this.notes = notes;
         this.courseID = courseID;
@@ -58,16 +59,21 @@ public class Assessments {
         this.assessmentName = assessmentName;
     }
 
-    public String getAssessmentDate() {
-
-        return assessmentDate;
+    public String getAssessmentStartDate() {
+        return assessmentStartDate;
     }
 
-    public void setAssessmentDate(String assessmentDate) {
-
-        this.assessmentDate = assessmentDate;
+    public void setAssessmentStartDate(String assessmentStartDate) {
+        this.assessmentStartDate = assessmentStartDate;
     }
 
+    public String getAssessmentEndDate() {
+        return assessmentEndDate;
+    }
+
+    public void setAssessmentEndDate(String assessmentEndDate) {
+        this.assessmentEndDate = assessmentEndDate;
+    }
     public int getAssessmentType() {
 
         return assessmentType;

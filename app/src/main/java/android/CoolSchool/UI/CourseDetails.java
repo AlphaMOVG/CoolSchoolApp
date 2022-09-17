@@ -79,7 +79,7 @@ public class CourseDetails extends AppCompatActivity {
         editCIName = findViewById(R.id.cINameTxt);
         editCIPhone = findViewById(R.id.cIPhoneTxt);
         editCIMail = findViewById(R.id.cIEmailTxt);
-        editAssessmentsSpin = findViewById(R.id.assessmentsSpinner);
+        editAssessmentsSpin = findViewById(R.id.termsSpinner);
         editStatusSpin = findViewById(R.id.statusSpinner);
         editNote = findViewById(R.id.notesTxt);
 
@@ -181,9 +181,9 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * This is where the spinner is populated with information from the added assessments
          * */
-        Spinner assessmentSpinner = (Spinner) findViewById(R.id.assessmentsSpinner);
+        Spinner assessmentSpinner = (Spinner) findViewById(R.id.termsSpinner);
         ArrayList<Assessments> myAssessments = new ArrayList<>();
-        myAssessments.add(new Assessments(-1, "None", "", 1, "", 1));
+        myAssessments.add(new Assessments(-1, "None", "", "", 1, "", 1));
         ArrayAdapter<Assessments> assessmentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myAssessments);
         assessmentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         assessmentSpinner.setAdapter(assessmentAdapter);

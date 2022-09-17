@@ -42,6 +42,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout8"
         android:layout_width="260dp"
         android:layout_height="50dp"
         android:layout_marginTop="116dp"
@@ -77,6 +78,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout10"
         android:layout_width="361dp"
         android:layout_height="53dp"
         android:layout_marginTop="220dp"
@@ -94,6 +96,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout9"
         android:layout_width="347dp"
         android:layout_height="50dp"
         android:layout_marginTop="276dp"
@@ -147,7 +150,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Spinner
-        android:id="@+id/assessmentsSpinner"
+        android:id="@+id/termsSpinner"
         android:layout_width="331dp"
         android:layout_height="46dp"
         android:layout_marginTop="460dp"
@@ -183,19 +186,8 @@
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="120dp"
-        android:layout_height="52dp"
-        android:layout_marginBottom="12dp"
-        android:text="Alert Notification"
-        android:textColor="#091970"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.856"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout7"
         android:layout_width="373dp"
         android:layout_height="57dp"
         android:layout_marginTop="568dp"
@@ -206,9 +198,22 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/notesTxt"
-            android:layout_width="345dp"
+            android:layout_width="330dp"
             android:layout_height="match_parent"
             android:hint="Notes" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/assessmentButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="672dp"
+        android:backgroundTint="#091970"
+        android:text="Associated Assessments"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -40,16 +40,20 @@ public class AssessmentDetails extends AppCompatActivity {
 
     TextInputEditText editAssessmentIDTxt;
     TextInputEditText editAssessmentNameTxt;
-    TextInputEditText editAssessmentDatePicker;
+    TextInputEditText editAssessmentStartDatePicker;
+    TextInputEditText editAssessmentEndDatePicker;
     Spinner editSpinner;
     TextInputEditText editAssessmentNote;
+    Spinner editCourseSpinner;
 
     int id;
     String name;
-    String date;
+    String startDate;
+    String endDate;
     int type;
     String note;
     Repository repo;
+    int course;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,20 +65,24 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
-        editAssessmentDatePicker = findViewById(R.id.assessmentDatePicker);
+        editAssessmentStartDatePicker = findViewById(R.id.StartDatePicker);
+        editAssessmentEndDatePicker = findViewById(R.id.endDatePicker);
         editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
+        editCourseSpinner = findViewById(R.id.courseSpinner);
 
 
 
         /**
          * assigns the keys of the adapter to the variables I created
          * */
-        id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
-        date = getIntent().getStringExtra("date");
+        startDate = getIntent().getStringExtra("startdate");
+        endDate = getIntent().getStringExtra("enddate");
         type = getIntent().getIntExtra("type", 1);
         note = getIntent().getStringExtra("notes");
+        course = getIntent().getIntExtra("courseid", -1);
 
 
         /**
@@ -82,24 +90,22 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt.setText(Integer.toString(id));
         editAssessmentNameTxt.setText(name);
-        editAssessmentDatePicker.setText(date);
+        editAssessmentStartDatePicker.setText(startDate);
+        editAssessmentEndDatePicker.setText(endDate);
         editAssessmentNote.setText(note);
         repo = new Repository(getApplication());
-
-
-
 
 
         /**
          * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
          * */
 
-        dateText = findViewById(R.id.assessmentDatePicker);
+        dateText = findViewById(R.id.StartDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = null;
-        if(date != null){
-            currentDate = date;
+        if(startDate != null){
+            currentDate = startDate;
         }
         else{
             currentDate = sdf.format(new Date());
@@ -130,6 +136,44 @@ public class AssessmentDetails extends AppCompatActivity {
         };
 
         /**
+         * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
+         * */
+        dateText = findViewById(R.id.EndDatePicker);
+        myFormat = "MM/dd/yy";
+        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        String currentDateEnd = null;
+        if(endDate != null){
+            currentDateEnd = endDate;
+        }
+        else{
+            currentDateEnd = sdf.format(new Date());
+        }
+        dateText.setText(currentDateEnd);
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Date date;
+                String info = dateText.getText().toString();
+                try {
+                    myCalendar.setTime(sdf.parse(info));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                new DatePickerDialog(AssessmentDetails.this, myDate, myCalendar.get(Calendar.YEAR),
+                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+        myDate = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabelEnd();
+            }
+        };
+
+        /**
          * This is where the spinner is populated with information from the added assessments
          * */
         Spinner courseSpinner = (Spinner) findViewById(R.id.courseSpinner);
@@ -138,6 +182,7 @@ public class AssessmentDetails extends AppCompatActivity {
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         courseSpinner.setAdapter(courseAdapter);
+        selectSpinnerItemByValue(editCourseSpinner, course);
 
         courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -174,6 +219,15 @@ public class AssessmentDetails extends AppCompatActivity {
         dateText.setText(sdf.format(myCalendar.getTime()));
     }
 
+    /**
+     * This method is apart of the DatePicker set up
+     */
+    private void updateLabelEnd() {
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        dateText.setText(sdf.format(myCalendar.getTime()));
+    }
+
 
     /**
      * inflates the menu and set items to the menu.
@@ -195,7 +249,7 @@ public class AssessmentDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentNote.getText()); // how do i add notes here? DON'T FORGET TO ASK!
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editAssessmentNote.getText());
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
@@ -226,8 +280,6 @@ public class AssessmentDetails extends AppCompatActivity {
                     if(currentAssessment != null){
                         Toast.makeText(AssessmentDetails.this, currentAssessment.getAssessmentName() + "was deleted", Toast.LENGTH_SHORT).show();
                     }
-
-
 
                 return true;
         }
@@ -262,8 +314,8 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
     /**
-     * Need to add the date handling code here
-     * saving fields when save button is pressed, fix the spinners that need to be set, add delete functionality, refresh button, end date picker, also ask about the DAO classes on how to join other tables.
+     *
+     * saving fields when save button is pressed, , refresh button
      * */
 }
 
