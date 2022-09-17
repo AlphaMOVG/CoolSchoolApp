@@ -29,6 +29,7 @@ public class Terms {
 
     @Override
     public String toString() {
+
         return  this.termName;
     }
 
@@ -63,10 +64,6 @@ public class Terms {
     public void setEnd(String end) {
         this.end = end;
     }
-
-
-
-
 
     public String getNotes() {
         return notes;

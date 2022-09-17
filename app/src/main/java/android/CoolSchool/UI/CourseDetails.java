@@ -32,7 +32,8 @@ import java.util.Locale;
 
 public class CourseDetails extends AppCompatActivity {
 
-    TextInputEditText dateText;
+    TextInputEditText startDateText;
+    TextInputEditText endDateText;
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
@@ -107,24 +108,29 @@ public class CourseDetails extends AppCompatActivity {
         editCIName.setText(cIName);
         editCIPhone.setText(cINumber);
         editCIMail.setText(cIEM);
-        //find out how to properly set these when an item is selected
         editNote.setText(note);
 
         repo = new Repository(getApplication());
 
         /**
-         * building and assigning a calender object to the Edit text field in the app. also ask how to assign th date picker to another edit text field
+         * building and assigning a calender object to the Edit text field in the app. also ask how to assign the date picker to another edit text field
          * */
-        dateText = findViewById(R.id.startDatePicker);
-        myFormat = "MM/dd/yy";
+        startDateText = findViewById(R.id.StartDatePicker);
+        String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
-        currentDate = sdf.format(new Date());
-        dateText.setText(currentDate);
-        dateText.setOnClickListener(new View.OnClickListener() {
+        String currentDate = null;
+        if(start != null){
+            currentDate = start;
+        }
+        else{
+            currentDate = sdf.format(new Date());
+        }
+        startDateText.setText(currentDate);
+        startDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = dateText.getText().toString();
+                String info = startDateText.getText().toString();
                 try {
                     myCalendar.setTime(sdf.parse(info));
                 } catch (Exception e) {
@@ -140,7 +146,7 @@ public class CourseDetails extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                updateLabelStart();
             }
         };
 
@@ -148,16 +154,22 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        dateText = findViewById(R.id.endDatePicker);
+        endDateText = findViewById(R.id.EndDatePicker);
         myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
-        currentDate = sdf.format(new Date());
-        dateText.setText(currentDate);
-        dateText.setOnClickListener(new View.OnClickListener() {
+        String currentDateEnd = null;
+        if(end != null){
+            currentDateEnd = end;
+        }
+        else{
+            currentDateEnd = sdf.format(new Date());
+        }
+        endDateText.setText(currentDateEnd);
+        endDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = dateText.getText().toString();
+                String info = endDateText.getText().toString();
                 try {
                     myCalendar.setTime(sdf.parse(info));
                 } catch (Exception e) {
@@ -173,7 +185,7 @@ public class CourseDetails extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
+                updateLabelEnd();
             }
         };
 
@@ -220,11 +232,19 @@ public class CourseDetails extends AppCompatActivity {
     /**
      * This method is apart of the DatePicker set up
      * */
-    private void updateLabel(){
+    private void updateLabelStart(){
         String myFormat = "MM/dd/yy";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        startDateText.setText(sdf.format(myCalendar.getTime()));
+    }
 
-        dateText.setText(sdf.format(myCalendar.getTime()));
+    /**
+     * This method is apart of the DatePicker set up
+     * */
+    private void updateLabelEnd(){
+        String myFormat = "MM/dd/yy";
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+        endDateText.setText(sdf.format(myCalendar.getTime()));
     }
 
     /**
@@ -262,26 +282,36 @@ public class CourseDetails extends AppCompatActivity {
             case R.id.shareNotes:
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText()); // how do i add notes here? DON'T FORGET TO ASK!
+                sendIntent.putExtra(Intent.EXTRA_TEXT, editNote.getText());
                 sendIntent.putExtra(Intent.EXTRA_TITLE, "Notes");
                 sendIntent.setType("text/plain");
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
                 return true;
             case R.id.notify:
-                String dateFromScreen = dateText.getText().toString();
+                String dateFromScreen = startDateText.getText().toString();
+                String endDateFromScreen = endDateText.getText().toString();
                 Date myDate = null;
+                Date myEndDate = null;
                 try {
                     myDate = sdf.parse(dateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                try {
+                    myEndDate = sdf.parse(endDateFromScreen);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 Long trigger = myDate.getTime();
+                Long secondTrigger = myEndDate.getTime();
                 Intent intent = new Intent(CourseDetails.this, MyReceiver.class);
-                intent.putExtra("key", "message I want to send");
+                intent.putExtra("key", editName.getText() + " " + " starts today");
+                intent.putExtra("key", editName.getText() + " "+ " ends today");
                 PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
                 return true;
             case R.id.delete:
 
@@ -291,9 +321,17 @@ public class CourseDetails extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * onClick action for the associated assessments button
+     * */
+    public void associatedAssessments(View view) {
+        Intent intent = new Intent(CourseDetails.this, AssociatedAssessments.class);
+        startActivity(intent);
+    }
+
     /**
      * Need to add the date handeling code here
-     * Need to add the save, notes and send code
-     * figure out how to join assessments.
+     * Need to add the save,
      * */
 }

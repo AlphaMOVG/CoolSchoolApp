@@ -209,6 +209,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="672dp"
         android:backgroundTint="#091970"
+        android:onClick="associatedAssessments"
         android:text="Associated Assessments"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

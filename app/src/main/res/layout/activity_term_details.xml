@@ -77,6 +77,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout12"
         android:layout_width="359dp"
         android:layout_height="72dp"
         android:layout_marginTop="312dp"
@@ -97,7 +98,7 @@
         android:id="@+id/saveButtonT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="148dp"
         android:backgroundTint="#091970"
         android:text="Save"
         android:textColor="@color/white"
@@ -106,33 +107,11 @@
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="106dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="96dp"
-        android:text="Alert Notification"
-        android:textColor="#091970"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.816"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Spinner
-        android:id="@+id/courseSpinner"
-        android:layout_width="280dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="400dp"
-        android:background="#4B4C50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout11"
         android:layout_width="342dp"
         android:layout_height="59dp"
-        android:layout_marginTop="480dp"
+        android:layout_marginTop="404dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.231"
         app:layout_constraintStart_toStartOf="parent"
@@ -144,5 +123,19 @@
             android:layout_height="match_parent"
             android:hint="Notes" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/coursesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="532dp"
+        android:backgroundTint="#091970"
+        android:onClick="associatedCourses"
+        android:text="View associated courses"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.903"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

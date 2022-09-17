@@ -13,11 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoolSchool"
         tools:targetApi="31">
+        <activity
+            android:name=".UI.AssociatedCourses"
+            android:exported="false"
+            android:parentActivityName=".UI.TermDetails"/>
+        <activity
+            android:name=".UI.AssociatedAssessments"
+            android:exported="false"
+            android:parentActivityName=".UI.CourseDetails"/>
 
         <receiver
             android:name=".UI.MyReceiver"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
 
         <activity
             android:name=".UI.TermDetails"
