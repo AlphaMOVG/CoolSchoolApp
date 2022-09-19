@@ -317,7 +317,7 @@ public class AssessmentDetails extends AppCompatActivity {
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
         }
     }
-
+//
 
     public static void selectSpinnerItemByValue(Spinner spnr, int value) {
         ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();
