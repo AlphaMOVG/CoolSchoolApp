@@ -33,10 +33,14 @@ import java.util.Locale;
 
 public class AssessmentDetails extends AppCompatActivity {
     TextInputEditText startDateText;
-    TextInputEditText endDateText;
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
+
+    TextInputEditText endDateText;
+    DatePickerDialog.OnDateSetListener myDateEnd;
+    final Calendar myCalendarEnd = Calendar.getInstance();
+    SimpleDateFormat sdfEnd;
 
 
     TextInputEditText editAssessmentIDTxt;
@@ -139,35 +143,35 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         endDateText = findViewById(R.id.EndDatePicker);
         myFormat = "MM/dd/yy";
-        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        sdfEnd = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
         if(endDate != null){
             currentDateEnd = endDate;
         }
         else{
-            currentDateEnd = sdf.format(new Date());
+            currentDateEnd = sdfEnd.format(new Date());
         }
         endDateText.setText(currentDateEnd);
         endDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = endDateText.getText().toString();
+                String infoEnd = endDateText.getText().toString();
                 try {
-                    myCalendar.setTime(sdf.parse(info));
+                    myCalendarEnd.setTime(sdfEnd.parse(infoEnd));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(AssessmentDetails.this, myDate, myCalendar.get(Calendar.YEAR),
-                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(AssessmentDetails.this, myDate, myCalendarEnd.get(Calendar.YEAR),
+                        myCalendarEnd.get(Calendar.MONTH), myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        myDate = new DatePickerDialog.OnDateSetListener() {
+        myDateEnd = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myCalendarEnd.set(Calendar.YEAR, year);
+                myCalendarEnd.set(Calendar.MONTH, monthOfYear);
+                myCalendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabelEnd();
             }
         };
@@ -180,15 +184,15 @@ public class AssessmentDetails extends AppCompatActivity {
         myCourses.addAll(repo.getAllCourses());
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        courseSpinner.setAdapter(courseAdapter);
+        editCourseSpinner.setAdapter(courseAdapter);
        // courseSpinner.setSelection(course);
-        selectSpinnerItemByValue(courseSpinner, -1);
+        selectSpinnerItemByValue(editCourseSpinner, -1);
         for(int i  = 0 ; i < myCourses.size(); i++){
-            if(myCourses.get(i).getCoursesID() == course) courseSpinner.setSelection(i);
+            if(myCourses.get(i).getCoursesID() == course) editCourseSpinner.setSelection(i);
         }
 
 
-        courseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        editCourseSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(AssessmentDetails.this,myCourses.get(i).toString(),Toast.LENGTH_LONG).show();
@@ -227,9 +231,9 @@ public class AssessmentDetails extends AppCompatActivity {
      * This method is apart of the DatePicker set up
      */
     private void updateLabelEnd() {
-        String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        endDateText.setText(sdf.format(myCalendar.getTime()));
+        String myFormatEnd = "MM/dd/yy";
+        SimpleDateFormat sdfEnd = new SimpleDateFormat(myFormatEnd, Locale.US);
+        endDateText.setText(sdfEnd.format(myCalendarEnd.getTime()));
     }
 
 
@@ -280,9 +284,11 @@ public class AssessmentDetails extends AppCompatActivity {
                 intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
                 intent.putExtra("key", editAssessmentNameTxt.getText() + " "+ " ends today");
                 PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent senderEnd = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
+                alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
                 Toast.makeText(AssessmentDetails.this, "Alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.delete:
@@ -302,17 +308,17 @@ public class AssessmentDetails extends AppCompatActivity {
     }
 
 
-   /* public void save(View view) {
+    public void save(View view) {
         Assessments assessments;
         if(id == -1){
             int newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
-            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), editAssessmentDatePicker.getText().toString());
+            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), editAssessmentStartDatePicker.getText().toString(), editAssessmentEndDatePicker.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
             repo.insert(assessments);
         } else{
-            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), editAssessmentDatePicker.getText().toString());
+            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), editAssessmentStartDatePicker.getText().toString(), editAssessmentEndDatePicker.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
             repo.update(assessments);
         }
-    }*/
+    }
 
 
     public static void selectSpinnerItemByValue(Spinner spnr, int value) {
@@ -325,8 +331,7 @@ public class AssessmentDetails extends AppCompatActivity {
         }
     }
 
-    public void save(View view) {
-    }
+
 
     /**
      *

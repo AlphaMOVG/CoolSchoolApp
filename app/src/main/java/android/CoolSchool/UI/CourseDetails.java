@@ -38,8 +38,11 @@ public class CourseDetails extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener myDate;
     final Calendar myCalendar = Calendar.getInstance();
     SimpleDateFormat sdf;
-    String myFormat;
-    String currentDate;
+
+    DatePickerDialog.OnDateSetListener myDateEnd;
+    final Calendar myCalendarEnd = Calendar.getInstance();
+    SimpleDateFormat sdfEnd;
+
 
 
     TextInputEditText editID;
@@ -154,37 +157,37 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        endDateText = findViewById(R.id.endDatePicker);
+        endDateText = findViewById(R.id.EndDatePicker);
         myFormat = "MM/dd/yy";
-        sdf = new SimpleDateFormat(myFormat, Locale.US);
+        sdfEnd = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
         if(end != null){
             currentDateEnd = end;
         }
         else{
-            currentDateEnd = sdf.format(new Date());
+            currentDateEnd = sdfEnd.format(new Date());
         }
         endDateText.setText(currentDateEnd);
         endDateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Date date;
-                String info = endDateText.getText().toString();
+                String infoEnd = endDateText.getText().toString();
                 try {
-                    myCalendar.setTime(sdf.parse(info));
+                    myCalendarEnd.setTime(sdfEnd.parse(infoEnd));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(CourseDetails.this, myDate, myCalendar.get(Calendar.YEAR),
-                        myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(CourseDetails.this, myDate, myCalendarEnd.get(Calendar.YEAR),
+                        myCalendarEnd.get(Calendar.MONTH), myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        myDate = new DatePickerDialog.OnDateSetListener() {
+        myDateEnd = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                myCalendarEnd.set(Calendar.YEAR, year);
+                myCalendarEnd.set(Calendar.MONTH, monthOfYear);
+                myCalendarEnd.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 updateLabelEnd();
             }
         };
@@ -197,14 +200,14 @@ public class CourseDetails extends AppCompatActivity {
         myTerms.addAll(repo.getAllTerms());
         ArrayAdapter<Terms> termAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myTerms);
         termAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-        termSpinner.setAdapter(termAdapter);
-        selectSpinnerItemByValue(termSpinner, -1);
+        editTermsSpin.setAdapter(termAdapter);
+        selectSpinnerItemByValue(editTermsSpin, -1);
         for(int i  = 0 ; i < myTerms.size(); i++) {
-            if (myTerms.get(i).getTermsID() == termsID) termSpinner.setSelection(i);
+            if (myTerms.get(i).getTermsID() == termsID) editTermsSpin.setSelection(i);
         }
 
 
-        termSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        editTermsSpin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(CourseDetails.this,myTerms.get(i).toString(),Toast.LENGTH_LONG).show();
@@ -244,10 +247,10 @@ public class CourseDetails extends AppCompatActivity {
     /**
      * This method is apart of the DatePicker set up
      * */
-    private void updateLabelEnd(){
-        String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        endDateText.setText(sdf.format(myCalendar.getTime()));
+    private void updateLabelEnd() {
+        String myFormatEnd = "MM/dd/yy";
+        SimpleDateFormat sdfEnd = new SimpleDateFormat(myFormatEnd, Locale.US);
+        endDateText.setText(sdfEnd.format(myCalendarEnd.getTime()));
     }
 
     /**
@@ -302,7 +305,7 @@ public class CourseDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 try {
-                    myEndDate = sdf.parse(endDateFromScreen);
+                    myEndDate = sdfEnd.parse(endDateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -312,9 +315,11 @@ public class CourseDetails extends AppCompatActivity {
                 intent.putExtra("key", editName.getText() + " " + " starts today");
                 intent.putExtra("key", editName.getText() + " "+ " ends today");
                 PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent senderEnd = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
-                alarmManager.set(AlarmManager.RTC_WAKEUP, secondTrigger, sender);
+                alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
                 Toast.makeText(CourseDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
 
                 return true;
