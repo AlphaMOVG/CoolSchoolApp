@@ -44,8 +44,7 @@ public class AssessmentDetails extends AppCompatActivity {
 
     TextInputEditText editAssessmentIDTxt;
     TextInputEditText editAssessmentNameTxt;
-    TextInputEditText editAssessmentStartDatePicker;
-    TextInputEditText editAssessmentEndDatePicker;
+
     Spinner editSpinner;
     TextInputEditText editAssessmentNote;
     Spinner editCourseSpinner;
@@ -69,8 +68,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
-        editAssessmentStartDatePicker = findViewById(R.id.startDatePicker);
-        editAssessmentEndDatePicker = findViewById(R.id.endDatePicker);
+
         editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
         editCourseSpinner = findViewById(R.id.courseSpinner);
@@ -310,11 +308,13 @@ public class AssessmentDetails extends AppCompatActivity {
         Assessments assessments;
         if(id == -1){
             int newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
-            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), editAssessmentStartDatePicker.getText().toString(), editAssessmentEndDatePicker.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
+            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
             repo.insert(assessments);
+            Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
         } else{
-            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), editAssessmentStartDatePicker.getText().toString(), editAssessmentEndDatePicker.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
+            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
             repo.update(assessments);
+            Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
         }
     }
 
