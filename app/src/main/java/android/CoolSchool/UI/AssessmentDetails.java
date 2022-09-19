@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -70,7 +69,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * */
         editAssessmentIDTxt = findViewById(R.id.assessmentIDTxt);
         editAssessmentNameTxt = findViewById(R.id.assessmentNameTxt);
-        editAssessmentStartDatePicker = findViewById(R.id.StartDatePicker);
+        editAssessmentStartDatePicker = findViewById(R.id.startDatePicker);
         editAssessmentEndDatePicker = findViewById(R.id.endDatePicker);
         editSpinner = findViewById(R.id.typeSpinner);
         editAssessmentNote = findViewById(R.id.noteTxt);
@@ -103,7 +102,7 @@ public class AssessmentDetails extends AppCompatActivity {
          * building and assigning a calender object to the Edit text field in the app. need logic to determine modifying or adding an                assessment.
          * */
 
-        startDateText = findViewById(R.id.StartDatePicker);
+        startDateText = findViewById(R.id.startDatePicker);
         String myFormat = "MM/dd/yy";
         sdf = new SimpleDateFormat(myFormat, Locale.US);
         String currentDate = null;
@@ -141,7 +140,7 @@ public class AssessmentDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        endDateText = findViewById(R.id.EndDatePicker);
+        endDateText = findViewById(R.id.endDatePicker);
         myFormat = "MM/dd/yy";
         sdfEnd = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
@@ -162,7 +161,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(AssessmentDetails.this, myDate, myCalendarEnd.get(Calendar.YEAR),
+                new DatePickerDialog(AssessmentDetails.this, myDateEnd, myCalendarEnd.get(Calendar.YEAR),
                         myCalendarEnd.get(Calendar.MONTH), myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -185,7 +184,6 @@ public class AssessmentDetails extends AppCompatActivity {
         ArrayAdapter<Courses> courseAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, myCourses);
         courseAdapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         editCourseSpinner.setAdapter(courseAdapter);
-       // courseSpinner.setSelection(course);
         selectSpinnerItemByValue(editCourseSpinner, -1);
         for(int i  = 0 ; i < myCourses.size(); i++){
             if(myCourses.get(i).getCoursesID() == course) editCourseSpinner.setSelection(i);
@@ -274,7 +272,7 @@ public class AssessmentDetails extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 try {
-                    myEndDate = sdf.parse(endDateFromScreen);
+                    myEndDate = sdfEnd.parse(endDateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }

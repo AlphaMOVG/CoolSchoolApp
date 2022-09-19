@@ -73,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/StartDatePicker"
+            android:id="@+id/startDatePicker"
             android:layout_width="262dp"
             android:layout_height="match_parent"
             android:hint="Assessment Start Date"
@@ -148,7 +148,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/EndDatePicker"
+            android:id="@+id/endDatePicker"
             android:layout_width="262dp"
             android:layout_height="match_parent"
             android:hint="Assessment End Date"

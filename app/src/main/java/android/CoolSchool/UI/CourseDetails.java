@@ -43,6 +43,8 @@ public class CourseDetails extends AppCompatActivity {
     final Calendar myCalendarEnd = Calendar.getInstance();
     SimpleDateFormat sdfEnd;
 
+    String myFormat;
+    String currentDate;
 
 
     TextInputEditText editID;
@@ -157,7 +159,7 @@ public class CourseDetails extends AppCompatActivity {
         /**
          * building and assigning a calender object to the Edit text field in the app. also ask how to set the edit text field to the saved date of the selected item.
          * */
-        endDateText = findViewById(R.id.EndDatePicker);
+        endDateText = findViewById(R.id.endDatePicker);
         myFormat = "MM/dd/yy";
         sdfEnd = new SimpleDateFormat(myFormat, Locale.US);
         String currentDateEnd = null;
@@ -172,13 +174,13 @@ public class CourseDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Date date;
-                String infoEnd = endDateText.getText().toString();
+                String info = endDateText.getText().toString();
                 try {
-                    myCalendarEnd.setTime(sdfEnd.parse(infoEnd));
+                    myCalendarEnd.setTime(sdfEnd.parse(info));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(CourseDetails.this, myDate, myCalendarEnd.get(Calendar.YEAR),
+                new DatePickerDialog(CourseDetails.this, myDateEnd, myCalendarEnd.get(Calendar.YEAR),
                         myCalendarEnd.get(Calendar.MONTH), myCalendarEnd.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
@@ -321,7 +323,6 @@ public class CourseDetails extends AppCompatActivity {
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
                 Toast.makeText(CourseDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
-
                 return true;
             case R.id.delete:
 
