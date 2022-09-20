@@ -3,7 +3,9 @@ package android.CoolSchool.UI;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
+import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.Entity.Courses;
+import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
@@ -253,7 +255,22 @@ public class TermDetails extends AppCompatActivity {
 
                 return true;
             case R.id.delete:
-
+                Terms currentTerm = null;
+                int numTerms;
+                for(Terms t: repo.getAllTerms()){
+                    if (t.getTermsID() == Integer.parseInt(editID.getText().toString())) currentTerm = t;
+                }
+                numTerms = 0;
+                for(Courses c : repo.getAllCourses()) {
+                    if (c.getTermID() == Integer.parseInt(editID.getText().toString())) ++numTerms;
+                }
+                if(numTerms == 0) {
+                repo.delete(currentTerm);
+                Toast.makeText(TermDetails.this, currentTerm.getTermName() + "was deleted", Toast.LENGTH_SHORT).show();
+            } else{
+                    Toast.makeText(TermDetails.this, "Cannot delete" + " " +  editName.getText() + " " + "since the term has an associated course.", Toast.LENGTH_SHORT).show();
+                }
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -266,6 +283,22 @@ public class TermDetails extends AppCompatActivity {
         intent.putExtra("id", id);
         startActivity(intent);
     }
+
+    public void save(View view) {
+        Terms terms;
+        if(id == -1){
+            int newID = repo.getAllTerms().get(repo.getAllTerms().size() - 1).getTermsID() + 1;
+            terms = new Terms(newID, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editNote.getText().toString());
+            repo.insert(terms);
+            Toast.makeText(TermDetails.this, "Term with the name" + " " +  editName.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
+    } else{
+            terms = new Terms(Integer.parseInt(editID.getText().toString()), editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editNote.getText().toString());
+            repo.update(terms);
+            Toast.makeText(TermDetails.this, "Term with the name" + " " +  editName.getText() + " " + "has been update.", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 
     /**
      * Need to add the date handeling code here

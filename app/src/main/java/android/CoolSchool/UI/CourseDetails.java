@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Assessments;
+import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
 import android.app.AlarmManager;
@@ -326,7 +327,23 @@ public class CourseDetails extends AppCompatActivity {
                 return true;
             case R.id.delete:
 
+                Courses currentCourse = null;
+                int numCourses;
+                for (Courses c : repo.getAllCourses()){
+                    if(c.getCoursesID() == Integer.parseInt(editID.getText().toString())) currentCourse = c;
+                }
+                numCourses = 0;
+                for(Assessments a : repo.getAllAssessments()){
+                    if (a.getCourseID() == Integer.parseInt(editID.getText().toString())) ++numCourses;
+                }
 
+                if (numCourses == 0) {
+                    repo.delete(currentCourse);
+                    Toast.makeText(CourseDetails.this,      editName.getText() + " " + "has been deleted.", Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(CourseDetails.this, "Cannot delete" + " " +  editName.getText() + " " + "since it is associated.", Toast.LENGTH_SHORT).show();
+                }
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
@@ -342,8 +359,18 @@ public class CourseDetails extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /**
-     *
-     * Need to add the save,
-     * */
+    public void save(View view) {
+        Courses courses;
+        if(id == -1){
+            int newID = repo.getAllCourses().get(repo.getAllCourses().size() - 1).getCoursesID() + 1;
+            courses = new Courses(newID, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), Integer.parseInt(editTermsSpin.getSelectedItem().toString()), Integer.parseInt(editStatusSpin.getSelectedItem().toString()), editNote.getText().toString());
+            repo.insert(courses);
+            Toast.makeText(CourseDetails.this, "Course with the name" + " " +  editName.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
+        } else{
+            courses = new Courses(id, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), Integer.parseInt(editTermsSpin.getSelectedItem().toString()), Integer.parseInt(editStatusSpin.getSelectedItem().toString()), editNote.getText().toString() );
+            repo.update(courses);
+            Toast.makeText(CourseDetails.this, "Course with the name" + " " +  editName.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

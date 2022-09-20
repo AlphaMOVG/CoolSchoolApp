@@ -308,7 +308,7 @@ public class AssessmentDetails extends AppCompatActivity {
         Assessments assessments;
         if(id == -1){
             int newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
-            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
+            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(editSpinner.getSelectedItem().toString()), editAssessmentNote.getText().toString(), Integer.parseInt(editCourseSpinner.getSelectedItem().toString()));
             repo.insert(assessments);
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
         } else{
@@ -317,7 +317,7 @@ public class AssessmentDetails extends AppCompatActivity {
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
         }
     }
-//
+
 
     public static void selectSpinnerItemByValue(Spinner spnr, int value) {
         ArrayAdapter adapter = (ArrayAdapter) spnr.getAdapter();
