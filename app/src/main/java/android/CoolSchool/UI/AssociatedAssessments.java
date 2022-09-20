@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.List;
 
@@ -57,5 +58,10 @@ public class AssociatedAssessments extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addAssessment(View view) {
+        Intent intent = new Intent(AssociatedAssessments.this, AssessmentDetails.class);
+        startActivity(intent);
     }
 }

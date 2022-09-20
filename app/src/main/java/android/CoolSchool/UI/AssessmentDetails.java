@@ -264,30 +264,36 @@ public class AssessmentDetails extends AppCompatActivity {
                 String endDateFromScreen = endDateText.getText().toString();
                 Date myDate = null;
                 Date myEndDate = null;
+
+
                 try {
                     myDate = sdf.parse(dateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
+                intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
+                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+
+
                 try {
                     myEndDate = sdfEnd.parse(endDateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Long trigger = myDate.getTime();
+
                 Long secondTrigger = myEndDate.getTime();
-                Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
                 Intent intentEnd = new Intent(AssessmentDetails.this, MyReceiver.class);
-                intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
                 intentEnd.putExtra("key", editAssessmentNameTxt.getText() + " "+ " ends today");
-                PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
-                PendingIntent senderEnd = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
-                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                PendingIntent senderEnd = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intentEnd, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
-                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
                 Toast.makeText(AssessmentDetails.this, "Alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
                 return true;
+
             case R.id.delete:
                 Assessments currentAssessment = null;
                 for(Assessments a: repo.getAllAssessments()){
@@ -308,8 +314,13 @@ public class AssessmentDetails extends AppCompatActivity {
     public void save(View view) {
         Assessments assessments;
         if(id == -1){
-            int newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
-            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(editSpinner.getSelectedItem().toString()), editAssessmentNote.getText().toString(), Integer.parseInt(editCourseSpinner.getSelectedItem().toString()));
+            int newID = 1;
+            if(repo.getAllAssessments().size() != 0){
+                 newID = repo.getAllAssessments().get(repo.getAllAssessments().size() - 1).getAssessmentsID() + 1;
+            }
+            Courses course  = (Courses) editCourseSpinner.getSelectedItem();
+            assessments = new Assessments(newID, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), (int)( editSpinner.getSelectedItemId()), editAssessmentNote.getText().toString(),
+                    course.getCoursesID());
             repo.insert(assessments);
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
         } else{

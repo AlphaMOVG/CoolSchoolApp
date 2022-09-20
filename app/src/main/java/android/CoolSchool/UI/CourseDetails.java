@@ -328,16 +328,17 @@ public class CourseDetails extends AppCompatActivity {
             case R.id.delete:
 
                 Courses currentCourse = null;
-                int numCourses;
+                int numAssessments;
+
                 for (Courses c : repo.getAllCourses()){
                     if(c.getCoursesID() == Integer.parseInt(editID.getText().toString())) currentCourse = c;
                 }
-                numCourses = 0;
+                numAssessments = 0;
                 for(Assessments a : repo.getAllAssessments()){
-                    if (a.getCourseID() == Integer.parseInt(editID.getText().toString())) ++numCourses;
+                    if (a.getCourseID() == Integer.parseInt(editID.getText().toString())) ++numAssessments;
                 }
 
-                if (numCourses == 0) {
+                if (numAssessments == 0) {
                     repo.delete(currentCourse);
                     Toast.makeText(CourseDetails.this,      editName.getText() + " " + "has been deleted.", Toast.LENGTH_SHORT).show();
                 } else{

@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.CoolSchool.Database.Repository;
 import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.R;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import java.util.List;
 
@@ -56,5 +58,10 @@ public class AssociatedCourses extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void addCourse(View view) {
+        Intent intent = new Intent(AssociatedCourses.this, CourseDetails.class);
+        startActivity(intent);
     }
 }

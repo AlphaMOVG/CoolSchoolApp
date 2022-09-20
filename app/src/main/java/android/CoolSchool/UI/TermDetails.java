@@ -256,15 +256,16 @@ public class TermDetails extends AppCompatActivity {
                 return true;
             case R.id.delete:
                 Terms currentTerm = null;
-                int numTerms;
+
+                int numCourses;
                 for(Terms t: repo.getAllTerms()){
                     if (t.getTermsID() == Integer.parseInt(editID.getText().toString())) currentTerm = t;
                 }
-                numTerms = 0;
+                numCourses = 0;
                 for(Courses c : repo.getAllCourses()) {
-                    if (c.getTermID() == Integer.parseInt(editID.getText().toString())) ++numTerms;
+                    if (c.getTermID() == Integer.parseInt(editID.getText().toString())) ++numCourses;
                 }
-                if(numTerms == 0) {
+                if(numCourses == 0) {
                 repo.delete(currentTerm);
                 Toast.makeText(TermDetails.this, currentTerm.getTermName() + "was deleted", Toast.LENGTH_SHORT).show();
             } else{
