@@ -277,8 +277,9 @@ public class AssessmentDetails extends AppCompatActivity {
                 Long trigger = myDate.getTime();
                 Long secondTrigger = myEndDate.getTime();
                 Intent intent = new Intent(AssessmentDetails.this, MyReceiver.class);
+                Intent intentEnd = new Intent(AssessmentDetails.this, MyReceiver.class);
                 intent.putExtra("key", editAssessmentNameTxt.getText() + " " + " starts today");
-                intent.putExtra("key", editAssessmentNameTxt.getText() + " "+ " ends today");
+                intentEnd.putExtra("key", editAssessmentNameTxt.getText() + " "+ " ends today");
                 PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 PendingIntent senderEnd = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -328,12 +329,5 @@ public class AssessmentDetails extends AppCompatActivity {
             }
         }
     }
-
-
-
-    /**
-     *
-     * saving fields when save button is pressed, , refresh button
-     * */
 }
 
