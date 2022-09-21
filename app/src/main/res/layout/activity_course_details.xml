@@ -7,29 +7,37 @@
     android:background="#FDFCFC"
     tools:context=".UI.CourseDetails">
 
+    <ScrollView
+        android:layout_width="407dp"
+        android:layout_height="730dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="81dp"
         android:layout_height="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="10dp"
         android:text="Course"
         android:textColor="#091970"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="20sp" />
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout4"
         android:layout_width="298dp"
         android:layout_height="55dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.104"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/courseIDTxt"
@@ -45,11 +53,7 @@
         android:id="@+id/textInputLayout8"
         android:layout_width="260dp"
         android:layout_height="50dp"
-        android:layout_marginTop="116dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/courseNameTxt"
@@ -63,11 +67,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="251dp"
         android:layout_height="50dp"
-        android:layout_marginTop="168dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.074"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/startDatePicker"
@@ -81,11 +81,7 @@
         android:id="@+id/textInputLayout10"
         android:layout_width="361dp"
         android:layout_height="53dp"
-        android:layout_marginTop="220dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/endDatePicker"
@@ -99,11 +95,7 @@
         android:id="@+id/textInputLayout9"
         android:layout_width="347dp"
         android:layout_height="50dp"
-        android:layout_marginTop="276dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.212"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cINameTxt"
@@ -116,11 +108,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="373dp"
         android:layout_height="53dp"
-        android:layout_marginTop="328dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cIPhoneTxt"
@@ -135,11 +123,7 @@
         android:id="@+id/textInputLayout2"
         android:layout_width="372dp"
         android:layout_height="50dp"
-        android:layout_marginTop="388dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/cIEmailTxt"
@@ -149,39 +133,29 @@
             android:textColor="#091970" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/termsSpinner"
-        android:layout_width="208dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="460dp"
-        android:background="#4B4C50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Spinner
+            android:id="@+id/termsSpinner"
+            android:layout_width="210dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="10dp"
+            android:background="#4B4C50"
 
-    <Spinner
-        android:id="@+id/statusSpinner"
-        android:layout_width="208dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="516dp"
-        android:background="#4B4C50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Spinner
+            android:id="@+id/statusSpinner"
+            android:layout_width="209dp"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:background="#4B4C50"
+
+            tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
         android:layout_width="373dp"
         android:layout_height="57dp"
-        android:layout_marginTop="568dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/notesTxt"
@@ -195,29 +169,22 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#091970"
         android:onClick="save"
         android:text="Save"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="@color/white" />
 
 
-    <Button
-        android:id="@+id/assessmentButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="644dp"
-        android:backgroundTint="#091970"
-        android:onClick="associatedAssessments"
-        android:text="Associated Assessments"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.903"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        <Button
+            android:id="@+id/assessmentButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#091970"
+            android:onClick="associatedAssessments"
+            android:text="Associated Assessments"
+            android:textColor="@color/white" />
+    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,6 @@
 package android.CoolSchool.UI;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.CoolSchool.Database.Repository;
-import android.CoolSchool.Entity.Assessments;
 import android.CoolSchool.Entity.Courses;
 import android.CoolSchool.Entity.Terms;
 import android.CoolSchool.R;
@@ -16,18 +13,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
-import android.widget.SimpleCursorAdapter;
-import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -82,7 +76,7 @@ public class TermDetails extends AppCompatActivity {
         /**
          * assigns the keys of the adapter to the variables I created
          * */
-        id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("id", -1);
         name = getIntent().getStringExtra("name");
         start = getIntent().getStringExtra("start");
         end = getIntent().getStringExtra("end");
@@ -305,7 +299,7 @@ public class TermDetails extends AppCompatActivity {
     } else{
             terms = new Terms(Integer.parseInt(editID.getText().toString()), editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editNote.getText().toString());
             repo.update(terms);
-            Toast.makeText(TermDetails.this, "Term with the name" + " " +  editName.getText() + " " + "has been update.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(TermDetails.this, "Term with the name" + " " +  editName.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
 
         }
     }
