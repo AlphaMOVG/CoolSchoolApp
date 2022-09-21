@@ -9,14 +9,14 @@
 
 
     <ScrollView
-        android:layout_width="410dp"
-        android:layout_height="725dp"
+        android:layout_width="407dp"
+        android:layout_height="730dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,17 +30,16 @@
                 android:layout_marginTop="32dp"
                 android:text="Assessment"
                 android:textColor="#091970"
-                android:textSize="20sp"
-       />
+                android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="299dp"
-                android:layout_height="wrap_content"
+                android:layout_width="327dp"
+                android:layout_height="42dp"
                 android:layout_marginTop="92dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/assessmentIDTxt"
-                    android:layout_width="268dp"
+                    android:layout_width="281dp"
                     android:layout_height="match_parent"
                     android:editable="false"
                     android:hint="Assessment ID"
@@ -68,8 +67,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="315dp"
                 android:layout_height="20dp"
-                android:layout_marginTop="236dp"
-    >
+                android:layout_marginTop="236dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/startDatePicker"
@@ -80,7 +78,6 @@
                     android:textColorHighlight="#091970"
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
 
             <Spinner
@@ -95,8 +92,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="313dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="464dp"
-              >
+                android:layout_marginTop="464dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/noteTxt"
@@ -118,8 +114,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="299dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="304dp"
-            >
+                android:layout_marginTop="304dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/endDatePicker"
@@ -139,8 +134,7 @@
                 android:backgroundTint="#091970"
                 android:onClick="save"
                 android:text="Save"
-                android:textColor="@color/white"
-                />
+                android:textColor="@color/white" />
         </LinearLayout>
 
 

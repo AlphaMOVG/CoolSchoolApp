@@ -156,9 +156,9 @@ public class TermDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Date date;
-                String infoEnd = endDateText.getText().toString();
+                String info = endDateText.getText().toString();
                 try {
-                    myCalendarEnd.setTime(sdfEnd.parse(infoEnd));
+                    myCalendarEnd.setTime(sdfEnd.parse(info));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -192,9 +192,9 @@ public class TermDetails extends AppCompatActivity {
      * This method is apart of the DatePicker set up
      * */
     private void updateLabelEnd(){
-        String myFormat = "MM/dd/yy";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        endDateText.setText(sdf.format(myCalendar.getTime()));
+        String myFormatEnd = "MM/dd/yy";
+        SimpleDateFormat sdfEnd = new SimpleDateFormat(myFormatEnd, Locale.US);
+        endDateText.setText(sdfEnd.format(myCalendarEnd.getTime()));
     }
 
 
@@ -230,27 +230,34 @@ public class TermDetails extends AppCompatActivity {
                 String endDateFromScreen = endDateText.getText().toString();
                 Date myDate = null;
                 Date myEndDate = null;
+
+
                 try {
                     myDate = sdf.parse(dateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(TermDetails.this, MyReceiver.class);
+                intent.putExtra("key", editName.getText() + " " + " starts today");
+                PendingIntent sender = PendingIntent.getBroadcast(TermDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+
+
                 try {
                     myEndDate = sdfEnd.parse(endDateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Long trigger = myDate.getTime();
+
                 Long secondTrigger = myEndDate.getTime();
-                Intent intent = new Intent(TermDetails.this, MyReceiver.class);
-                intent.putExtra("key", editName.getText() + " " + " starts today");
-                intent.putExtra("key", editName.getText() + " "+ " ends today");
-                PendingIntent sender = PendingIntent.getBroadcast(TermDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
-                PendingIntent senderEnd = PendingIntent.getBroadcast(TermDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
-                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Intent intentEnd = new Intent(TermDetails.this, MyReceiver.class);
+                intentEnd.putExtra("key", editName.getText() + " "+ " ends today");
+                PendingIntent senderEnd = PendingIntent.getBroadcast(TermDetails.this, MainActivity.numAlert++, intentEnd, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
-                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
+
                 Toast.makeText(TermDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
 
                 return true;
@@ -288,7 +295,10 @@ public class TermDetails extends AppCompatActivity {
     public void save(View view) {
         Terms terms;
         if(id == -1){
-            int newID = repo.getAllTerms().get(repo.getAllTerms().size() - 1).getTermsID() + 1;
+            int newID = 1;
+            if(repo.getAllTerms().size() != 0){
+                newID = repo.getAllTerms().get(repo.getAllTerms().size() - 1).getTermsID() + 1;
+            }
             terms = new Terms(newID, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editNote.getText().toString());
             repo.insert(terms);
             Toast.makeText(TermDetails.this, "Term with the name" + " " +  editName.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();

@@ -324,7 +324,9 @@ public class AssessmentDetails extends AppCompatActivity {
             repo.insert(assessments);
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
         } else{
-            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), Integer.parseInt(String.valueOf(editSpinner.getSelectedItem())), editAssessmentNote.getText().toString(), Integer.parseInt(String.valueOf(editCourseSpinner.getSelectedItem())));
+            Courses course  = (Courses) editCourseSpinner.getSelectedItem();
+            assessments = new Assessments(id, editAssessmentNameTxt.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), (int)( editSpinner.getSelectedItemId()), editAssessmentNote.getText().toString(),
+                    course.getCoursesID());
             repo.update(assessments);
             Toast.makeText(AssessmentDetails.this, "Assessment with the name" + " " +  editAssessmentNameTxt.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
         }

@@ -302,27 +302,34 @@ public class CourseDetails extends AppCompatActivity {
                 String endDateFromScreen = endDateText.getText().toString();
                 Date myDate = null;
                 Date myEndDate = null;
+
+
                 try {
                     myDate = sdf.parse(dateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
+                Long trigger = myDate.getTime();
+                Intent intent = new Intent(CourseDetails.this, MyReceiver.class);
+                intent.putExtra("key", editName.getText() + " " + " starts today");
+                PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
+                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+
+
                 try {
                     myEndDate = sdfEnd.parse(endDateFromScreen);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                Long trigger = myDate.getTime();
+
                 Long secondTrigger = myEndDate.getTime();
-                Intent intent = new Intent(CourseDetails.this, MyReceiver.class);
-                intent.putExtra("key", editName.getText() + " " + " starts today");
-                intent.putExtra("key", editName.getText() + " "+ " ends today");
-                PendingIntent sender = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
-                PendingIntent senderEnd = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE); //
-                AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                Intent intentEnd = new Intent(CourseDetails.this, MyReceiver.class);
+                intentEnd.putExtra("key", editName.getText() + " "+ " ends today");
+                PendingIntent senderEnd = PendingIntent.getBroadcast(CourseDetails.this, MainActivity.numAlert++, intentEnd, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
-                alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
                 alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
+
                 Toast.makeText(CourseDetails.this, "Alarm notifications for" + " " +  editName.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.delete:
@@ -342,7 +349,7 @@ public class CourseDetails extends AppCompatActivity {
                     repo.delete(currentCourse);
                     Toast.makeText(CourseDetails.this,      editName.getText() + " " + "has been deleted.", Toast.LENGTH_SHORT).show();
                 } else{
-                    Toast.makeText(CourseDetails.this, "Cannot delete" + " " +  editName.getText() + " " + "since it is associated.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CourseDetails.this, "Cannot delete" + " " +  editName.getText() + " " + "since the course has an associated assessment.", Toast.LENGTH_SHORT).show();
                 }
                 return true;
 
@@ -363,12 +370,17 @@ public class CourseDetails extends AppCompatActivity {
     public void save(View view) {
         Courses courses;
         if(id == -1){
-            int newID = repo.getAllCourses().get(repo.getAllCourses().size() - 1).getCoursesID() + 1;
-            courses = new Courses(newID, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), Integer.parseInt(editTermsSpin.getSelectedItem().toString()), Integer.parseInt(editStatusSpin.getSelectedItem().toString()), editNote.getText().toString());
+            int newID = 1;
+            if(repo.getAllCourses().size() != 0){
+                newID = repo.getAllCourses().get(repo.getAllCourses().size() - 1).getCoursesID() + 1;
+            }
+            Terms term  = (Terms) editTermsSpin.getSelectedItem();
+            courses = new Courses(newID, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), term.getTermsID(), (int)( editStatusSpin.getSelectedItemId()), editNote.getText().toString());
             repo.insert(courses);
             Toast.makeText(CourseDetails.this, "Course with the name" + " " +  editName.getText() + " " + "has been saved.", Toast.LENGTH_SHORT).show();
         } else{
-            courses = new Courses(id, editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), Integer.parseInt(editTermsSpin.getSelectedItem().toString()), Integer.parseInt(editStatusSpin.getSelectedItem().toString()), editNote.getText().toString() );
+            Terms term  = (Terms) editTermsSpin.getSelectedItem();
+            courses = new Courses(id,editName.getText().toString(), startDateText.getText().toString(), endDateText.getText().toString(), editCIName.getText().toString(), editCIPhone.getText().toString(), editCIMail.getText().toString(), term.getTermsID(), (int)( editStatusSpin.getSelectedItemId()), editNote.getText().toString());
             repo.update(courses);
             Toast.makeText(CourseDetails.this, "Course with the name" + " " +  editName.getText() + " " + "has been updated.", Toast.LENGTH_SHORT).show();
         }

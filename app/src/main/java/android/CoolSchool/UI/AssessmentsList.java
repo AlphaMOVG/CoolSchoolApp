@@ -29,7 +29,7 @@ public class AssessmentsList extends AppCompatActivity {
         final AssessmentsAdapter adapter = new AssessmentsAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter.setAssessments(assessments); //65465444
+        adapter.setAssessments(assessments);
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
