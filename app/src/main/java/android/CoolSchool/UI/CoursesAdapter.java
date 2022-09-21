@@ -41,10 +41,8 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
                     intent.putExtra("status", current.getStatus());
                     intent.putExtra("notes", current.getNotes());
                     context.startActivity(intent);
-
                 }
             });
-
         }
     }
 
@@ -52,6 +50,7 @@ public class CoursesAdapter extends RecyclerView.Adapter<CoursesAdapter.CoursesV
     private List<Courses> mCourses;
     private final Context context;
     private final LayoutInflater mInflater;
+
     public CoursesAdapter(Context context){
         mInflater = LayoutInflater.from(context);
         this.context = context;

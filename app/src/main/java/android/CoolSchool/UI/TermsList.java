@@ -32,7 +32,7 @@ public class TermsList extends AppCompatActivity {
         adapter.setTerms(terms);
     }
         public boolean onCreateOptionsMenu(Menu menu){
-            getMenuInflater().inflate(R.menu.refresh_menu, menu);
+            getMenuInflater().inflate(R.menu.refresh_terms_menu, menu);
             return true;
         }
         public boolean onOptionsItemSelected(MenuItem item){

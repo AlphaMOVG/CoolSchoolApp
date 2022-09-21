@@ -33,19 +33,17 @@ public class TermsAdapter extends RecyclerView.Adapter<TermsAdapter.TermsViewHol
                     intent.putExtra("start", current.getStart());
                     intent.putExtra("end", current.getEnd());
                     intent.putExtra("notes", current.getNotes());
-
                     context.startActivity(intent);
-
                 }
             });
-
         }
     }
-//
-//
+
+
     private List<Terms> mTerms;
     private final Context context;
     private final LayoutInflater mInflater;
+
     public TermsAdapter(Context context){
         mInflater = LayoutInflater.from(context);
         this.context = context;

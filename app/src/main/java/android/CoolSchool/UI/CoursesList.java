@@ -35,7 +35,7 @@ public class CoursesList extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.refresh_menu, menu);
+        getMenuInflater().inflate(R.menu.refresh_course_menu, menu);
         return true;
     }
     public boolean onOptionsItemSelected(MenuItem item){
