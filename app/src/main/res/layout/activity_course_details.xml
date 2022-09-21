@@ -8,8 +8,8 @@
     tools:context=".UI.CourseDetails">
 
     <ScrollView
-        android:layout_width="407dp"
-        android:layout_height="730dp"
+        android:layout_width="412dp"
+        android:layout_height="731dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -17,174 +17,187 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="81dp"
-        android:layout_height="30dp"
-        android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
-        android:text="Course"
-        android:textColor="#091970"
-        android:textSize="20sp" />
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout4"
-        android:layout_width="298dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/courseIDTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:editable="false"
-            android:hint="Course ID"
-            android:textColor="#091970" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout8"
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/courseNameTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="Course Name"
-            android:textColor="#091970"
-            tools:ignore="TextContrastCheck" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="251dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/startDatePicker"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="Start Date"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout10"
-        android:layout_width="361dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/endDatePicker"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="End Date"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout9"
-        android:layout_width="347dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cINameTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="C.I. Name"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="373dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cIPhoneTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="C.I. Phone #"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout2"
-        android:layout_width="372dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/cIEmailTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="C.I. E-Mail"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-        <Spinner
-            android:id="@+id/termsSpinner"
-            android:layout_width="210dp"
-            android:layout_height="52dp"
-            android:layout_marginTop="10dp"
-            android:background="#4B4C50"
-
-            tools:ignore="SpeakableTextPresentCheck" />
-
-        <Spinner
-            android:id="@+id/statusSpinner"
-            android:layout_width="209dp"
-            android:layout_height="54dp"
-            android:layout_marginTop="10dp"
-            android:background="#4B4C50"
-
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout7"
-        android:layout_width="373dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/notesTxt"
-            android:layout_width="208dp"
-            android:layout_height="match_parent"
-            android:hint="Notes"
-            android:textColor="#091970" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/saveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#091970"
-        android:onClick="save"
-        android:text="Save"
-        android:textColor="@color/white" />
-
-
-        <Button
-            android:id="@+id/assessmentButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#091970"
-            android:onClick="associatedAssessments"
-            android:text="Associated Assessments"
-            android:textColor="@color/white" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="81dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="10dp"
+                android:text="Course"
+                android:textColor="#091970"
+                android:textSize="20sp" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                android:layout_width="237dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/courseIDTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:editable="false"
+                    android:hint="Course ID"
+                    android:textColor="#091970" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout8"
+                android:layout_width="237dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/courseNameTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="Course Name"
+                    android:textColor="#091970"
+                    tools:ignore="TextContrastCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="237dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/startDatePicker"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="Start Date"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout10"
+                android:layout_width="237dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/endDatePicker"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="End Date"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout9"
+                android:layout_width="237dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cINameTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="C.I. Name"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="237dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cIPhoneTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="C.I. Phone #"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout2"
+                android:layout_width="237dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/cIEmailTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="C.I. E-Mail"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout7"
+                android:layout_width="237dp"
+                android:layout_height="57dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/notesTxt"
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent"
+                    android:hint="Notes"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/termsSpinner"
+                android:layout_width="208dp"
+                android:layout_height="52dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#4B4C50"
+
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/statusSpinner"
+                android:layout_width="208dp"
+                android:layout_height="54dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#4B4C50"
+
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+            <Button
+                android:id="@+id/saveButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#091970"
+                android:onClick="save"
+                android:text="Save"
+                android:textColor="@color/white" />
+
+
+            <Button
+                android:id="@+id/assessmentButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="#091970"
+                android:onClick="associatedAssessments"
+                android:text="Associated Assessments"
+                android:textColor="@color/white" />
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

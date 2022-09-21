@@ -9,8 +9,8 @@
 
 
     <ScrollView
-        android:layout_width="407dp"
-        android:layout_height="730dp"
+        android:layout_width="411dp"
+        android:layout_height="731dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -34,8 +34,9 @@
                 android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="332dp"
+                android:layout_width="299dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -51,8 +52,9 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout6"
-                android:layout_width="318dp"
+                android:layout_width="299dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -66,13 +68,14 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="311dp"
+                android:layout_width="299dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/startDatePicker"
-                    android:layout_width="259dp"
+                    android:layout_width="262dp"
                     android:layout_height="wrap_content"
                     android:hint="Assessment Start Date"
                     android:textColor="#091970"
@@ -80,41 +83,10 @@
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <Spinner
-                android:id="@+id/typeSpinner"
-                android:layout_width="258dp"
-                android:layout_height="60dp"
-                android:layout_marginTop="10dp"
-                android:background="#4B4C50"
-                android:forceDarkAllowed="false"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="313dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/noteTxt"
-                    android:layout_width="262dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Notes"
-                    android:textColor="#091970" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Spinner
-                android:id="@+id/courseSpinner"
-                android:layout_width="262dp"
-                android:layout_height="64dp"
-                android:layout_marginTop="10dp"
-                android:background="#4B4C50"
-
-                tools:ignore="SpeakableTextPresentCheck" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="299dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -127,11 +99,52 @@
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="299dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/noteTxt"
+                    android:layout_width="262dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Notes"
+                    android:textColor="#091970" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Spinner
+                android:id="@+id/typeSpinner"
+                android:layout_width="262dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="80dp"
+                android:background="#4B4C50"
+                android:forceDarkAllowed="false"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+            <Spinner
+                android:id="@+id/courseSpinner"
+                android:layout_width="262dp"
+                android:layout_height="64dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
+                android:background="#4B4C50"
+
+                tools:ignore="SpeakableTextPresentCheck" />
+
+
+
             <Button
                 android:id="@+id/saveButtonA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="40dp"
                 android:backgroundTint="#091970"
                 android:onClick="save"
                 android:text="Save"
