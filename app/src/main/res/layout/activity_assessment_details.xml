@@ -111,7 +111,7 @@
                     android:layout_width="262dp"
                     android:layout_height="wrap_content"
                     android:hint="Notes"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
