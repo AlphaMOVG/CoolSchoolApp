@@ -7,43 +7,52 @@
     android:background="#FDFCFC"
     tools:context=".UI.TermsList">
 
+    <ScrollView
+        android:layout_width="411dp"
+        android:layout_height="731dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="196dp"
         android:layout_height="23dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="130dp"
         android:text="Choose or add a term"
         android:textColor="#091970"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="16sp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="52dp"
-        android:clickable="true"
-        android:onClick="goToTermsDetails"
-        android:src="@drawable/ic_baseline_add_circle_24"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.921"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/termRecycler"
+            android:layout_width="302dp"
+            android:layout_height="223dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="84dp"
+            android:background="@color/white" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/termRecycler"
-        android:layout_width="383dp"
-        android:layout_height="222dp"
-        android:layout_marginTop="84dp"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="84dp"
+            android:layout_marginBottom="10dp"
+            android:clickable="true"
+            android:onClick="goToTermsDetails"
+            android:src="@drawable/ic_baseline_add_circle_24"
+            tools:ignore="SpeakableTextPresentCheck" />
 
+    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
