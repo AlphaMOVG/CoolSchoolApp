@@ -27,7 +27,7 @@
             android:layout_width="236dp"
             android:layout_height="31dp"
             android:layout_marginTop="136dp"
-            android:layout_marginLeft="95dp"
+            android:layout_marginLeft="90dp"
             android:text="Welcome to Cool School!"
             android:textColor="#091970"
             android:textSize="20sp" />
@@ -37,7 +37,7 @@
             android:layout_width="147dp"
             android:layout_height="31dp"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="135dp"
+            android:layout_marginLeft="130dp"
             android:text="Where school is cool "
             android:textColor="#091970" />
 
@@ -46,16 +46,16 @@
             android:layout_width="200dp"
             android:layout_height="193dp"
             android:layout_marginTop="52dp"
-            android:layout_marginLeft="100dp"
+            android:layout_marginLeft="95dp"
             android:src="@drawable/ic_baseline_school_gradhat" />
 
         <Button
             android:id="@+id/enterButton"
             android:layout_width="152dp"
             android:layout_height="67dp"
-            android:layout_marginLeft="125dp"
+            android:layout_marginLeft="118dp"
             android:layout_marginBottom="110dp"
-            android:backgroundTint="#03115E"
+            android:backgroundTint="#091970"
             android:onClick="enterButton"
             android:text="Enter"
             android:textColor="#F6F5F5" />

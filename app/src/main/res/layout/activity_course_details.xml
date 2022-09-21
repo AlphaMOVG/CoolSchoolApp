@@ -46,7 +46,7 @@
                     android:layout_height="match_parent"
                     android:editable="false"
                     android:hint="Course ID"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -62,7 +62,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="Course Name"
-                    android:textColor="#091970"
+                    android:textColor="@color/white"
                     tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -77,7 +77,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="Start Date"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -92,7 +92,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="End Date"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -107,7 +107,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="C.I. Name"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +121,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="C.I. Phone #"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -137,7 +137,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="C.I. E-Mail"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -152,7 +152,7 @@
                     android:layout_width="208dp"
                     android:layout_height="match_parent"
                     android:hint="Notes"
-                    android:textColor="#091970" />
+                    android:textColor="@color/white" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Spinner

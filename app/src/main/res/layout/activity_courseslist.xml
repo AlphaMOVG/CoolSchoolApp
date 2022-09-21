@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFCFC"
+    android:background="@color/white"
     tools:context=".UI.CoursesList">
 
     <ScrollView
@@ -17,41 +17,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="178dp"
-        android:layout_height="21dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="130dp"
-        android:text="Choose or add a course "
-        android:textColor="#091970"
-        android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courseRecycler"
-        android:layout_width="300dp"
-        android:layout_height="222dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginLeft="80dp"
-        android:background="@color/white" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="178dp"
+                android:layout_height="21dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="32dp"
+                android:text="Choose or add a course "
+                android:textColor="#091970"
+                android:textSize="16sp" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginBottom="10dp"
-        android:clickable="true"
-        android:onClick="goToCourseDetails"
-        android:src="@drawable/ic_baseline_add_circle_24"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/courseRecycler"
+                android:layout_width="300dp"
+                android:layout_height="222dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="84dp"
+                android:background="@color/white" />
 
-        tools:ignore="SpeakableTextPresentCheck" />
-    </LinearLayout>
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="84dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:onClick="goToCourseDetails"
+                android:src="@drawable/ic_baseline_add_circle_24"
+
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

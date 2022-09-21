@@ -26,28 +26,29 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="140dp"
+            android:layout_marginLeft="120dp"
             android:layout_marginTop="100dp"
             android:text="Select an option"
-            android:textColor="#091970" />
+            android:textColor="#091970"
+            android:textSize="20sp" />
 
-         <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:layout_marginLeft="145dp"
-        android:backgroundTint="#03115E"
-        android:onClick="termsButton"
-        android:text="Terms"
-        android:textColor="#F6F5F5" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="140dp"
+            android:layout_marginTop="50dp"
+            android:backgroundTint="#03115E"
+            android:onClick="termsButton"
+            android:text="Terms"
+            android:textColor="#F6F5F5" />
 
-         <Button
+        <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="140dp"
+        android:layout_marginLeft="135dp"
         android:backgroundTint="#03115E"
         android:onClick="coursesButton"
         android:text="Courses"
@@ -58,7 +59,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="115dp"
         android:backgroundTint="#03115E"
         android:onClick="assessmentsButton"
         android:text="Assessments"

@@ -21,8 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView5"
@@ -46,7 +45,7 @@
                     android:layout_height="match_parent"
                     android:editable="false"
                     android:hint="Assessment ID"
-                    android:textColor="#091970"
+                    android:textColor="@color/white"
                     android:textColorHighlight="#091970"
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,7 +62,7 @@
                     android:layout_width="261dp"
                     android:layout_height="wrap_content"
                     android:hint="Assessment Name"
-                    android:textColor="#091970"
+                    android:textColor="@color/white"
                     android:textColorHighlight="#091970"
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -79,7 +78,7 @@
                     android:layout_width="262dp"
                     android:layout_height="wrap_content"
                     android:hint="Assessment Start Date"
-                    android:textColor="#091970"
+                    android:textColor="@color/white"
                     android:textColorHighlight="#091970"
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -95,7 +94,7 @@
                     android:layout_width="262dp"
                     android:layout_height="wrap_content"
                     android:hint="Assessment End Date"
-                    android:textColor="#091970"
+                    android:textColor="@color/white"
                     android:textColorHighlight="#091970"
                     android:textColorHint="#091970" />
             </com.google.android.material.textfield.TextInputLayout>

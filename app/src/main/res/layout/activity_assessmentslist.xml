@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFCFC"
+    android:background="@color/white"
     tools:context=".UI.AssessmentsList">
 
     <ScrollView
@@ -17,42 +17,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="245dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginLeft="130dp"
-        android:text="Choose or add an assessment"
-        android:textColor="#091970"
-        android:textSize="16sp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assessmentRecycler"
-        android:layout_width="300dp"
-        android:layout_height="222dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginLeft="80dp"
-        android:background="@color/white" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="300dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginBottom="10dp"
-            android:clickable="true"
-            android:onClick="goToAssessmentDetails"
-            android:src="@drawable/ic_baseline_add_circle_24"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="245dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="70dp"
+                android:layout_marginTop="32dp"
+                android:text="Choose or add an assessment"
+                android:textColor="#091970"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assessmentRecycler"
+                android:layout_width="300dp"
+                android:layout_height="222dp"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="84dp"
+                android:background="@color/white" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="300dp"
+                android:layout_marginTop="84dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:onClick="goToAssessmentDetails"
+                android:src="@drawable/ic_baseline_add_circle_24"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+        </LinearLayout>
     </ScrollView>
 
 
