@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".UI.AssessmentsList">
+    android:background="#FDFCFC"
+    tools:context=".UI.TermsList">
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="523dp"
+        android:layout_width="527dp"
+        android:layout_height="410dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -24,23 +23,22 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView2"
-                android:layout_width="245dp"
-                android:layout_height="27dp"
-                android:layout_marginLeft="70dp"
+                android:id="@+id/textView4"
+                android:layout_width="196dp"
+                android:layout_height="23dp"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="32dp"
-                android:text="Choose or add an assessment"
+                android:text="Choose or add a term"
                 android:textColor="#091970"
                 android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/assessmentRecycler"
-                android:layout_width="300dp"
-                android:layout_height="222dp"
+                android:id="@+id/termRecycler"
+                android:layout_width="302dp"
+                android:layout_height="223dp"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="84dp"
                 android:background="@color/white" />
-
 
         </LinearLayout>
     </ScrollView>
@@ -50,15 +48,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
-        android:onClick="goToAssessmentDetails"
+        android:onClick="goToTermsDetails"
         android:src="@drawable/ic_baseline_add_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.92"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794"
+        app:layout_constraintVertical_bias="0.884"
         tools:ignore="SpeakableTextPresentCheck" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

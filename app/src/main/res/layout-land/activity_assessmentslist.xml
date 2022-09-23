@@ -8,9 +8,8 @@
     tools:context=".UI.AssessmentsList">
 
     <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="413dp"
-        android:layout_height="523dp"
+        android:layout_width="579dp"
+        android:layout_height="409dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -41,7 +40,6 @@
                 android:layout_marginTop="84dp"
                 android:background="@color/white" />
 
-
         </LinearLayout>
     </ScrollView>
 
@@ -54,10 +52,10 @@
         android:src="@drawable/ic_baseline_add_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794"
+        app:layout_constraintVertical_bias="0.819"
         tools:ignore="SpeakableTextPresentCheck" />
 
 

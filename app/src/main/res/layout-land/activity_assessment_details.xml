@@ -9,8 +9,8 @@
 
 
     <ScrollView
-        android:layout_width="411dp"
-        android:layout_height="731dp"
+        android:layout_width="731dp"
+        android:layout_height="410dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
 
             <TextView
                 android:id="@+id/textView5"
@@ -119,12 +120,11 @@
                 android:id="@+id/typeSpinner"
                 android:layout_width="262dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginLeft="80dp"
+                android:layout_marginTop="10dp"
                 android:background="#4B4C50"
                 android:forceDarkAllowed="false"
                 tools:ignore="SpeakableTextPresentCheck" />
-
 
 
             <Spinner
@@ -135,13 +135,14 @@
                 android:layout_marginTop="10dp"
                 android:background="#4B4C50"
                 tools:ignore="SpeakableTextPresentCheck" />
-            
+
             <Button
                 android:id="@+id/saveButtonA"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="40dp"
+                android:layout_marginBottom="150dp"
                 android:backgroundTint="#091970"
                 android:onClick="save"
                 android:text="Save"
