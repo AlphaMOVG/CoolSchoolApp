@@ -7,9 +7,13 @@
         android:orderInCategory="100"
         android:title="Share notes" />
     <item
-        android:id="@+id/notify"
+        android:id="@+id/startNotify"
         android:orderInCategory="100"
-        android:title="Notify" />
+        android:title="Start date notify" />
+    <item
+        android:id="@+id/endNotify"
+        android:orderInCategory="100"
+        android:title="End date notify" />
     <item
         android:id="@+id/delete"
         android:orderInCategory="100"

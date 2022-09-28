@@ -259,12 +259,10 @@ public class AssessmentDetails extends AppCompatActivity {
                 Intent shareIntent = Intent.createChooser(sendIntent, null);
                 startActivity(shareIntent);
                 return true;
-            case R.id.notify:
-                String dateFromScreen = startDateText.getText().toString();
-                String endDateFromScreen = endDateText.getText().toString();
-                Date myDate = null;
-                Date myEndDate = null;
 
+            case R.id.startNotify:
+                String dateFromScreen = startDateText.getText().toString();
+                Date myDate = null;
 
                 try {
                     myDate = sdf.parse(dateFromScreen);
@@ -277,7 +275,12 @@ public class AssessmentDetails extends AppCompatActivity {
                 PendingIntent sender = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intent, PendingIntent.FLAG_IMMUTABLE);
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
                 alarmManager.set(AlarmManager.RTC_WAKEUP, trigger, sender);
+                Toast.makeText(AssessmentDetails.this, "Start date alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
+                return true;
 
+            case R.id.endNotify:
+                String endDateFromScreen = endDateText.getText().toString();
+                Date myEndDate = null;
 
                 try {
                     myEndDate = sdfEnd.parse(endDateFromScreen);
@@ -291,7 +294,7 @@ public class AssessmentDetails extends AppCompatActivity {
                 PendingIntent senderEnd = PendingIntent.getBroadcast(AssessmentDetails.this, MainActivity.numAlert++, intentEnd, PendingIntent.FLAG_IMMUTABLE); //
                 AlarmManager alarmManagerEnd = (AlarmManager) getSystemService(Context.ALARM_SERVICE); //
                 alarmManagerEnd.set(AlarmManager.RTC_WAKEUP, secondTrigger, senderEnd);
-                Toast.makeText(AssessmentDetails.this, "Alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AssessmentDetails.this, "End date alarm notifications for" + " " +  editAssessmentNameTxt.getText() + " " + "have been set.", Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.delete:
